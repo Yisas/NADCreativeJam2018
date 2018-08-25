@@ -1253,6 +1253,9 @@ MonoBehaviour:
   scaredAudioClip: {fileID: 8300000, guid: cd5a432c039449b4f990b452e8fdc0bb, type: 3}
   vibrationInterval: 0.3
   vibrationIntensity: 0.4
+  isClimbLocked: 0
+  isFacingClimbable: 0
+  isSqueezing: 0
 --- !u!114 &114219941424015546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1264,6 +1267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d77736c00740b48bafaf31cd094890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomMemoryAssignmentLoopOn: 0
   minMemoryChangeTimer: 1
   maxMemoryChangeTimer: 2
 --- !u!114 &114273158035190688
