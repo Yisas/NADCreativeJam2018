@@ -25,10 +25,11 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = false;
     private bool isInsidePitfallAproachZone = false;            // Is inside an area where the player is scared of jumping
     public bool isFacingClimbable = false;                     // When facing climbable, movement logic will change
-    public bool isSqueezing = false;                    // When facing squeezable, movement logic will change
+    public bool isSqueezing = false;                           // When facing squeezable, movement logic will change
 
     // Private attributes
     private float vibrationTimer = 0;
+    private Vector2 pitfallDirection;                           // When entering a pitfall, is it to the right or left of the player
 
     // References
     private Rigidbody2D rb;
@@ -98,12 +99,32 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         bool playerIsMovingCharacter = Mathf.Abs(horizontalInput) != 0;
-        
+
         if (playerIsMovingCharacter)
         {
-            // If not facing climbable, or moving left, move normally...
+            // If not facing climbable...
             if (!isFacingClimbable)
-                transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
+            {
+                // ... check for memory effect of pitfal...
+                if (isInsidePitfallAproachZone && isJumpLockedWhenNearPitfall)
+                {
+                    // ... no moving towards pitfall if scared ...
+                    if (Mathf.Sign(horizontalInput) != Mathf.Sign(pitfallDirection.x))
+                    {
+                        transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
+                    }
+                    else
+                    {
+                        ScaredFeedback();
+                    }
+                }
+                else
+                {
+                    transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0)); 
+                }
+
+
+            }
             // ... Else climb if moving right
             else
             {
@@ -137,6 +158,8 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.tag == "PitfallAproach")
         {
             isInsidePitfallAproachZone = true;
+
+            pitfallDirection = (collision.transform.position - transform.position).normalized;
         }
     }
 

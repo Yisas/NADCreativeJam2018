@@ -100,4 +100,17 @@ public class MemoryCanvasController : MonoBehaviour
             i++;
         }
     }
+
+    public void FlushMemories()
+    {
+        int i = 0;
+        foreach (Image im in memorySprites)
+        {
+
+            ChangeMemoryAtIndex(i, null);
+            i++;
+        }
+
+        memoryCount = 0;
+    }
 }

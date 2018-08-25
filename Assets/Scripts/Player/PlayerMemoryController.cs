@@ -10,6 +10,7 @@ public class PlayerMemoryController : MonoBehaviour
     public static readonly int maxNumberOfMemories = 3;       // Mamimum amount of memories allowed
     private readonly int numOfMemoryTypes = 4;                // Number of memory types, disregarding "None"
 
+    public bool randomMemoryAssignmentLoopOn = false;
     public float minMemoryChangeTimer;
     public float maxMemoryChangeTimer;
     private float memoryChangeTimer = 0;
@@ -33,21 +34,30 @@ public class PlayerMemoryController : MonoBehaviour
             return;
         }
 
-        memoryChangeTimer -= Time.deltaTime;
-
-        if (memoryChangeTimer <= 0)
+        if (randomMemoryAssignmentLoopOn)
         {
-            AssignNewMemory();
+            memoryChangeTimer -= Time.deltaTime;
 
-            // get a new countdown to the next change
-            memoryChangeTimer = Random.Range(minMemoryChangeTimer, maxMemoryChangeTimer);
+            if (memoryChangeTimer <= 0)
+            {
+                AssignNewMemory();
+
+                // get a new countdown to the next change
+                memoryChangeTimer = Random.Range(minMemoryChangeTimer, maxMemoryChangeTimer);
+            }
         }
     }
 
-    void AssignNewMemory()
+    public void AssignNewMemory()
     {
-        // Choose a new memory to asign
-        MemoryTypes memoryToAssign = (MemoryTypes)Random.Range(1, numOfMemoryTypes + 1);   // +1 since random funct is exclusive
+        // Find an elegible memory to assign (not already in the memory pool)
+        MemoryTypes memoryToAssign;
+        do
+        {
+            // Choose a new memory to asign
+            memoryToAssign = (MemoryTypes)Random.Range(1, numOfMemoryTypes + 1);   // +1 since random funct is exclusive
+        }
+        while (memories.Contains(memoryToAssign));
 
         // If the memory stack is not full, occupy an empty one...
         if (memories.Count < maxNumberOfMemories)
@@ -148,10 +158,16 @@ public class PlayerMemoryController : MonoBehaviour
     /// </summary>
     public void FlushAllMemories()
     {
-        for (int i = 0; i < memories.Count; i++)
+        int prevNumOfMemories = memories.Count;
+
+        for (int i = 0; i < prevNumOfMemories; i++)
         {
             RemoveMemory();
         }
+
+        ApplyPitfallMemory(false);
+        ApplyClimbMemory(false);
+        MemoryCanvasController.instance.FlushMemories();
     }
 
     /// <summary>
@@ -159,6 +175,6 @@ public class PlayerMemoryController : MonoBehaviour
     /// </summary>
     private void CycleMemory()
     {
-        RemoveMemory();
+        FlushAllMemories();
     }
 }
