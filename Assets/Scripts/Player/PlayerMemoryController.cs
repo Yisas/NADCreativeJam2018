@@ -80,9 +80,6 @@ public class PlayerMemoryController : MonoBehaviour
         {
             ApplyMemoryAtIndex(memoryIndexToChange, memoryToAssign);
         }
-
-        // Display memory effect in UI
-        MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange, memoryToAssign);
     }
 
     private void RemoveMemoryAtIndex(int memoryIndexToChange)
@@ -116,6 +113,9 @@ public class PlayerMemoryController : MonoBehaviour
         if (!memories.Contains(memoryToAssign))
         {
             Debug.Log("Applying memory " + memoryToAssign + " at index " + memoryIndexToChange);
+
+            // Remove prior memory
+            RemoveMemoryAtIndex(memoryIndexToChange);
 
             switch (memoryToAssign)
             {
