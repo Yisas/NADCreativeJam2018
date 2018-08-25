@@ -134,6 +134,6 @@ public class PlayerMemoryController : MonoBehaviour
 
     private void ApplyPitfallMemory(bool active)
     {
-        PlayerController.Instance.LockUnlockJump(active);
+        PlayerController.Instance.LockUnlockJumpWhenNearPitfall(active);
     }
 }
