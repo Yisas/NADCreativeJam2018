@@ -47,7 +47,7 @@ public class PlayerMemoryController : MonoBehaviour
     void AssignNewMemory()
     {
         // Choose a new memory to asign
-        MemoryTypes memoryToAssign = (MemoryTypes)Random.Range(0, numOfMemoryTypes + 1);   // +1 since random funct is exclusive
+        MemoryTypes memoryToAssign = (MemoryTypes)Random.Range(1, numOfMemoryTypes + 1);   // +1 since random funct is exclusive
 
         // If the memory stack is not full, occupy an empty one...
         if (memories.Count < maxNumberOfMemories)
@@ -60,17 +60,7 @@ public class PlayerMemoryController : MonoBehaviour
             return;
         }
 
-        // Apply memory effect
-        // Remove if none ...
-        if (memoryToAssign == MemoryTypes.None)
-        {
-            RemoveMemory();
-        }
-        // ... else apply effect
-        else
-        {
-            ApplyMemory(memoryToAssign);
-        }
+        ApplyMemory(memoryToAssign);
     }
 
     private void RemoveMemory()
@@ -100,9 +90,6 @@ public class PlayerMemoryController : MonoBehaviour
                     ApplyClimbMemory(true);
                     break;
             }
-
-            // Display memory effect in UI
-            MemoryCanvasController.instance.RemoveMemory();
         }
     }
 
