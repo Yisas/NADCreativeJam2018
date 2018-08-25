@@ -6,14 +6,17 @@ public class PlayerController : MonoBehaviour {
 
     public float moveSpeed;
     public float jumpForce;
+
+    private bool isJumping = false;
+    private Rigidbody2D rb;
     
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+		rb = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         float horizontalInput = Input.GetAxis("Horizontal");
         bool playerIsMovingCharacter = Mathf.Abs(horizontalInput) > 0;
@@ -22,10 +25,19 @@ public class PlayerController : MonoBehaviour {
         {
             transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
         }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            isJumping = true;
+        }
 	}
 
     private void FixedUpdate()
     {
-        
+        if (isJumping)
+        {
+            rb.AddForce(new Vector2(0, jumpForce));
+            isJumping = false;
+        }
     }
 }
