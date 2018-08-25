@@ -8,7 +8,7 @@ public class PlayerMemoryController : MonoBehaviour
 
     public enum MemoryTypes { None, Pitfall, Climb, PitfallBoost, ClimbBoost };
     public static readonly int maxNumberOfMemories = 3;       // Mamimum amount of memories allowed
-    private readonly int numOfMemoryTypes = 5;          // Number of memory types, disregarding "None"
+    private readonly int numOfMemoryTypes = 4;                // Number of memory types, disregarding "None"
 
     public float minMemoryChangeTimer;
     public float maxMemoryChangeTimer;
@@ -102,7 +102,7 @@ public class PlayerMemoryController : MonoBehaviour
             }
 
             // Display memory effect in UI
-            MemoryCanvasController.instance.ChangeMemory(MemoryTypes.None);
+            MemoryCanvasController.instance.RemoveMemory();
         }
     }
 

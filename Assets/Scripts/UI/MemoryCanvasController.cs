@@ -64,12 +64,40 @@ public class MemoryCanvasController : MonoBehaviour
         }
     }
 
+    private void ChangeMemoryAtIndex(int memoryIndexToChange, Sprite spriteToApply)
+    {
+        memorySprites[memoryIndexToChange].sprite = spriteToApply;
+    }
+
     public void ChangeMemory(PlayerMemoryController.MemoryTypes memoryType)
     {
         if (memoryCount < PlayerMemoryController.maxNumberOfMemories)
         {
             ChangeMemoryAtIndex(memoryCount, memoryType);
             memoryCount++;
+        }
+        else
+        {
+            RemoveMemory();
+            ChangeMemoryAtIndex(PlayerMemoryController.maxNumberOfMemories - 1, memoryType);
+        }
+    }
+
+    public void RemoveMemory()
+    {
+        int i = 0;
+        foreach (Image im in memorySprites)
+        {
+            if (i < PlayerMemoryController.maxNumberOfMemories - 1)
+            {
+                ChangeMemoryAtIndex(i, memorySprites[i + 1].sprite);
+            }
+            else
+            {
+                ChangeMemoryAtIndex(memorySprites.Length - 1, null);
+            }
+
+            i++;
         }
     }
 }
