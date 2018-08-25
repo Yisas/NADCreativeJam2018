@@ -50,8 +50,14 @@ public class PlayerMemoryController : MonoBehaviour
 
     public void AssignNewMemory()
     {
-        // Choose a new memory to asign
-        MemoryTypes memoryToAssign = (MemoryTypes)Random.Range(1, numOfMemoryTypes + 1);   // +1 since random funct is exclusive
+        // Find an elegible memory to assign (not already in the memory pool)
+        MemoryTypes memoryToAssign;
+        do
+        {
+            // Choose a new memory to asign
+            memoryToAssign = (MemoryTypes)Random.Range(1, numOfMemoryTypes + 1);   // +1 since random funct is exclusive
+        }
+        while (memories.Contains(memoryToAssign));
 
         // If the memory stack is not full, occupy an empty one...
         if (memories.Count < maxNumberOfMemories)
