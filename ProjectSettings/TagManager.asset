@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PitfallDrop
   - PitfallAproach
+  - ClimbCheck
+  - Climbable
   layers:
   - Default
   - TransparentFX

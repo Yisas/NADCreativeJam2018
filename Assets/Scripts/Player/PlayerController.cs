@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool isJumping = false;
     private bool isGrounded = false;
     private bool isInsidePitfallAproachZone = false;            // Is inside an area where the player is scared of jumping
+    private bool isFacingClimbable = false;                     // When facing climbable, movement logic will change
 
     // References
     private Rigidbody2D rb;
@@ -108,5 +109,10 @@ public class PlayerController : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void SetIsFacingClimbable(bool value)
+    {
+        isFacingClimbable = value;
     }
 }
