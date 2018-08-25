@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MainUIController : MonoBehaviour {
 
-    public SpriteRenderer blackSprite;
+    public Image blackSprite;
     public float fadeSpeed = 0.05f;
 
 	// Use this for initialization
@@ -27,9 +27,9 @@ public class MainUIController : MonoBehaviour {
     {
         for (float f = 1f; f >= 0; f -= fadeSpeed)
         {
-            Color c = blackSprite.material.color;
+            Color c = blackSprite.color;
             c.a = f;
-            blackSprite.material.color = c;
+            blackSprite.color = c;
             yield return null;
         }
     }
@@ -38,9 +38,9 @@ public class MainUIController : MonoBehaviour {
     {
         for (float f = 0f; f <= 1.0f; f += fadeSpeed)
         {
-            Color c = blackSprite.material.color;
+            Color c = blackSprite.color;
             c.a = f;
-            blackSprite.material.color = c;
+            blackSprite.color = c;
             yield return null;
         }
     }
