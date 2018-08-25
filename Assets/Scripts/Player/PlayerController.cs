@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
-
     public static PlayerController Instance;
 
     public float moveSpeed;
     public float climbSpeed;
     public float jumpForce;
+
+    public AudioClip scaredAudioClip;
 
     // States
     private bool isJumpLockedWhenNearPitfall = false;
@@ -21,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     // References
     private Rigidbody2D rb;
+    private AudioSource audioSource;
     private float initGravityScale;
 
     void Awake()
@@ -36,6 +40,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         initGravityScale = rb.gravityScale;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -64,7 +69,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    // TODO: Don't want to climb feedback goes here
+                    PlayScaredSound();
                 }
             }
         }
@@ -131,6 +136,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (isInsidePitfallAproachZone)
                 {
+                    PlayScaredSound();
                     return false;
                 }
             }
@@ -147,5 +153,12 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = 0;
         else
             rb.gravityScale = initGravityScale;
+    }
+
+    private void PlayScaredSound()
+    {
+        if (!audioSource.isPlaying)
+            // Play "scared of pitfall" sound
+            audioSource.PlayOneShot(scaredAudioClip, 1);
     }
 }
