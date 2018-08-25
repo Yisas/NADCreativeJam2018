@@ -8,6 +8,7 @@ TagManager:
   - PitfallAproach
   - ClimbCheck
   - Climbable
+  - Squeezable
   layers:
   - Default
   - TransparentFX
