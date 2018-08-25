@@ -20,6 +20,7 @@ public class BuddyAIController : MonoBehaviour {
             {
                 Destroy(target.gameObject);
                 target = playerAnchor;
+                PlayerMemoryController.Instance.AssignNewMemory();
             }
         }
     }
