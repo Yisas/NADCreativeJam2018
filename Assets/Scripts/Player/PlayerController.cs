@@ -20,12 +20,12 @@ public class PlayerController : MonoBehaviour
 
     // States
     private bool isJumpLockedWhenNearPitfall = false;
-    private bool isClimbLocked = false;
+    public bool isClimbLocked = false;
     private bool isJumping = false;
     private bool isGrounded = false;
     private bool isInsidePitfallAproachZone = false;            // Is inside an area where the player is scared of jumping
-    private bool isFacingClimbable = false;                     // When facing climbable, movement logic will change
-    private bool isSqueezing = false;                    // When facing squeezable, movement logic will change
+    public bool isFacingClimbable = false;                     // When facing climbable, movement logic will change
+    public bool isSqueezing = false;                    // When facing squeezable, movement logic will change
 
     // Private attributes
     private float vibrationTimer = 0;
@@ -97,12 +97,12 @@ public class PlayerController : MonoBehaviour
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        bool playerIsMovingCharacter = Mathf.Abs(horizontalInput) > 0;
+        bool playerIsMovingCharacter = Mathf.Abs(horizontalInput) != 0;
         
         if (playerIsMovingCharacter)
         {
             // If not facing climbable, or moving left, move normally...
-            if (!isFacingClimbable || horizontalInput < 0)
+            if (!isFacingClimbable)
                 transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
             // ... Else climb if moving right
             else
@@ -110,10 +110,10 @@ public class PlayerController : MonoBehaviour
                 // ... also check for memory effect
                 if (!isClimbLocked)
                 {
-                    if (horizontalInput >= 0)
-                    {
-                        transform.Translate(new Vector3(0, Time.deltaTime * climbSpeed * horizontalInput, 0));
-                    }
+                    //Vector2 currVel = GetComponent<Rigidbody2D>().velocity;
+                    //GetComponent<Rigidbody2D>().velocity = new Vector2(currVel.x, climbSpeed);
+                    Vector3 vectorControl = new Vector3(Time.deltaTime * climbSpeed * horizontalInput * 0.1f, Mathf.Abs(Time.deltaTime * climbSpeed * horizontalInput), 0);
+                    transform.Translate(vectorControl, 0);
                 }
                 else
                 {
