@@ -15,7 +15,7 @@ public class PlayerMemoryController : MonoBehaviour {
     // How many memories you have
     private int memoryCount = 0;
 
-    private MemoryTypes[] memories = new MemoryTypes[3];
+    private List<MemoryTypes> memories = new List<MemoryTypes>();
 
 	// Use this for initialization
 	void Start () {
@@ -55,6 +55,24 @@ public class PlayerMemoryController : MonoBehaviour {
             memoryIndexToChange = Random.Range(0, 2);
         }
 
+        // Apply memory effect
+        // Don't apply same type twice
+        if (!memories.Contains(memoryToAssign))
+        {
+            switch (memoryToAssign)
+            {
+                case MemoryTypes.Pitfall:
+                    PlayerController.Instance.LockUnlockJump(true);
+                    break;
+            }
+        }
+
+        // Display memory effect in UI
         MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange, memoryToAssign);
+    }
+
+    private void ApplyPitfallMemory(bool active)
+    {
+        PlayerController.Instance.LockUnlockJump(active);
     }
 }

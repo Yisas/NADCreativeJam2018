@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public static PlayerController Instance;
+
     public float moveSpeed;
     public float jumpForce;
 
     // States
+    private bool isJumpLocked = false;
     private bool isJumping = false;
     private bool isGrounded = false;
 
     // References
     private Rigidbody2D rb;
-    
-	// Use this for initialization
-	void Start () {
+
+    void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
 		rb = GetComponent<Rigidbody2D>();
     }
 
@@ -30,7 +41,7 @@ public class PlayerController : MonoBehaviour {
             transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded && !isJumpLocked)
         {
             isJumping = true;
             isGrounded = false;
@@ -60,5 +71,10 @@ public class PlayerController : MonoBehaviour {
         {
             isGrounded = false;
         }
+    }
+
+    public void LockUnlockJump(bool lockJump)
+    {
+        isJumpLocked = lockJump;
     }
 }
