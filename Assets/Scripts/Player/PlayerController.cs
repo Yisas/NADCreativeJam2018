@@ -48,8 +48,8 @@ public class PlayerController : MonoBehaviour
 
         if (playerIsMovingCharacter)
         {
-            // If not facing climbable, move normally...
-            if (!isFacingClimbable)
+            // If not facing climbable, or moving left, move normally...
+            if (!isFacingClimbable || horizontalInput < 0)
                 transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
             // ... Else climb if moving right
             else
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
     private bool CheckIfCanJump()
     {
         // Check if grounded
-        if (!isGrounded || isJumping)
+        if (!isGrounded || isJumping || isFacingClimbable)
         {
             return false;
         }
