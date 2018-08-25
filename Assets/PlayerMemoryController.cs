@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMemoryController : MonoBehaviour {
 
-    public enum MemoryTypes { None, Pitfall};
+    public enum MemoryTypes { None, Pitfall, Climb};
     private readonly int maxNumberOfMemories = 3;       // Mamimum amount of memories allowed
+    private readonly int numOfMemoryTypes = 2;          // Number of memory types, disregarding "None"
 
     public float minMemoryChangeTimer;
     public float maxMemoryChangeTimer;
@@ -37,8 +38,8 @@ public class PlayerMemoryController : MonoBehaviour {
 
     void AssignNewMemory(MemoryTypes memory)
     {
+        // Choose a memory to change
         int memoryIndexToChange = 0;
-
         // If the memory stack is not full, occupy an empty one...
         if (memoryCount < maxNumberOfMemories)
         {
@@ -51,6 +52,10 @@ public class PlayerMemoryController : MonoBehaviour {
             memoryIndexToChange = Random.Range(0, 2);
         }
 
-        MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange);
+        // Choose a new memory to asign
+        MemoryTypes memoryToAssign = (MemoryTypes) Random.Range(0, numOfMemoryTypes);
+        Debug.Log(memoryToAssign);
+
+        MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange, memoryToAssign);
     }
 }
