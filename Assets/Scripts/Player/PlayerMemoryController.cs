@@ -41,6 +41,11 @@ public class PlayerMemoryController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Cycle Memory"))
+        {
+            CycleMemory();
+            return;
+        }
 
         memoryChangeTimer -= Time.deltaTime;
 
@@ -75,7 +80,7 @@ public class PlayerMemoryController : MonoBehaviour
         // ...  else change a random one
         else
         {
-            memoryIndexToChange = Random.Range(0, 2);
+            memoryIndexToChange = Random.Range(0, maxNumberOfMemories);
         }
 
         // Apply memory effect
@@ -165,6 +170,24 @@ public class PlayerMemoryController : MonoBehaviour
         for (int i = 0; i < memories.Count; i++)
         {
             RemoveMemoryAtIndex(i);
+        }
+    }
+
+    /// <summary>
+    /// User cycles a memory in their pool
+    /// </summary>
+    private void CycleMemory()
+    {
+        int i = 0;
+        foreach (MemoryTypes m in memories)
+        {
+            if (m != MemoryTypes.None)
+            {
+                RemoveMemoryAtIndex(i);
+                return;
+            }
+
+            i++;
         }
     }
 }
