@@ -73,7 +73,7 @@ public class PlayerMemoryController : MonoBehaviour
         // Remove if none ...
         if (memoryToAssign == MemoryTypes.None)
         {
-            RemoveMemoryAtIndex(memoryIndexToChange);            
+            RemoveMemoryAtIndex(memoryIndexToChange);
         }
         // ... else apply effect
         else
@@ -97,6 +97,9 @@ public class PlayerMemoryController : MonoBehaviour
                 case MemoryTypes.Pitfall:
                     ApplyPitfallMemory(false);
                     break;
+                case MemoryTypes.Climb:
+                    ApplyClimbMemory(false);
+                    break;
             }
 
             // Update list
@@ -108,7 +111,7 @@ public class PlayerMemoryController : MonoBehaviour
     }
 
     private void ApplyMemoryAtIndex(int memoryIndexToChange, MemoryTypes memoryToAssign)
-    {      
+    {
         // Don't apply same type twice
         if (!memories.Contains(memoryToAssign))
         {
@@ -121,6 +124,9 @@ public class PlayerMemoryController : MonoBehaviour
             {
                 case MemoryTypes.Pitfall:
                     ApplyPitfallMemory(true);
+                    break;
+                case MemoryTypes.Climb:
+                    ApplyClimbMemory(true);
                     break;
             }
 
@@ -135,5 +141,10 @@ public class PlayerMemoryController : MonoBehaviour
     private void ApplyPitfallMemory(bool active)
     {
         PlayerController.Instance.LockUnlockJumpWhenNearPitfall(active);
+    }
+
+    private void ApplyClimbMemory(bool active)
+    {
+        PlayerController.Instance.LockUnlockClimbing(active);
     }
 }

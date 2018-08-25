@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     // States
     private bool isJumpLockedWhenNearPitfall = false;
+    private bool isClimbLocked = false;
     private bool isJumping = false;
     private bool isGrounded = false;
     private bool isInsidePitfallAproachZone = false;            // Is inside an area where the player is scared of jumping
@@ -53,9 +54,17 @@ public class PlayerController : MonoBehaviour
             // ... Else climb if moving right
             else
             {
-                if(horizontalInput >= 0)
+                // ... also check for memory effect
+                if (!isClimbLocked)
                 {
-                    transform.Translate(new Vector3( 0, Time.deltaTime * climbSpeed * horizontalInput, 0));
+                    if (horizontalInput >= 0)
+                    {
+                        transform.Translate(new Vector3(0, Time.deltaTime * climbSpeed * horizontalInput, 0));
+                    }
+                }
+                else
+                {
+                    // TODO: Don't want to climb feedback goes here
                 }
             }
         }
@@ -101,6 +110,11 @@ public class PlayerController : MonoBehaviour
     public void LockUnlockJumpWhenNearPitfall(bool lockJump)
     {
         isJumpLockedWhenNearPitfall = lockJump;
+    }
+
+    public void LockUnlockClimbing(bool lockClimb)
+    {
+        isClimbLocked = lockClimb;
     }
 
     private bool CheckIfCanJump()
