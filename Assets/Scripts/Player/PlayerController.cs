@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XInputDotNetPure; 
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(AudioSource))]
@@ -14,6 +15,9 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip scaredAudioClip;
 
+    public float vibrationInterval;
+    public float vibrationIntensity;
+
     // States
     private bool isJumpLockedWhenNearPitfall = false;
     private bool isClimbLocked = false;
@@ -21,6 +25,9 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = false;
     private bool isInsidePitfallAproachZone = false;            // Is inside an area where the player is scared of jumping
     private bool isFacingClimbable = false;                     // When facing climbable, movement logic will change
+
+    // Private attributes
+    private float vibrationTimer = 0;
 
     // References
     private Rigidbody2D rb;
@@ -46,6 +53,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Reset vibration
+        if (vibrationTimer > 0)
+        {
+            vibrationTimer -= Time.deltaTime;
+            if (vibrationTimer <= 0)
+            {
+                GamePad.SetVibration(0, 0, 0);
+            }
+        }
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -69,7 +85,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    PlayScaredSound();
+                    ScaredFeedback();
                 }
             }
         }
@@ -136,7 +152,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (isInsidePitfallAproachZone)
                 {
-                    PlayScaredSound();
+                    ScaredFeedback();
                     return false;
                 }
             }
@@ -155,8 +171,14 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = initGravityScale;
     }
 
-    private void PlayScaredSound()
+    /// <summary>
+    /// Sound + vibration
+    /// </summary>
+    private void ScaredFeedback()
     {
+        GamePad.SetVibration(0, vibrationIntensity, vibrationIntensity);
+        vibrationTimer = vibrationInterval;
+
         if (!audioSource.isPlaying)
             // Play "scared of pitfall" sound
             audioSource.PlayOneShot(scaredAudioClip, 1);

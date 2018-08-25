@@ -1220,6 +1220,8 @@ MonoBehaviour:
   climbSpeed: 20
   jumpForce: 1000
   scaredAudioClip: {fileID: 8300000, guid: cd5a432c039449b4f990b452e8fdc0bb, type: 3}
+  vibrationInterval: 0.3
+  vibrationIntensity: 0.4
 --- !u!114 &114219941424015546
 MonoBehaviour:
   m_ObjectHideFlags: 1
