@@ -38,10 +38,13 @@ public class PlayerMemoryController : MonoBehaviour {
 
     void AssignNewMemory(MemoryTypes memory)
     {
+        // Choose a new memory to asign
+        MemoryTypes memoryToAssign = (MemoryTypes) Random.Range(0, numOfMemoryTypes + 1);   // +1 since random funct is exclusive
+
         // Choose a memory to change
         int memoryIndexToChange = 0;
         // If the memory stack is not full, occupy an empty one...
-        if (memoryCount < maxNumberOfMemories)
+        if (memoryCount < maxNumberOfMemories && memoryToAssign != MemoryTypes.None)
         {
             memoryIndexToChange = memoryCount;
             memoryCount++;
@@ -51,10 +54,6 @@ public class PlayerMemoryController : MonoBehaviour {
         {
             memoryIndexToChange = Random.Range(0, 2);
         }
-
-        // Choose a new memory to asign
-        MemoryTypes memoryToAssign = (MemoryTypes) Random.Range(0, numOfMemoryTypes);
-        Debug.Log(memoryToAssign);
 
         MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange, memoryToAssign);
     }
