@@ -7,7 +7,11 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed;
     public float jumpForce;
 
+    // States
     private bool isJumping = false;
+    private bool isGrounded = false;
+
+    // References
     private Rigidbody2D rb;
     
 	// Use this for initialization
@@ -26,9 +30,10 @@ public class PlayerController : MonoBehaviour {
             transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isJumping = true;
+            isGrounded = false;
         }
 	}
 
@@ -38,6 +43,22 @@ public class PlayerController : MonoBehaviour {
         {
             rb.AddForce(new Vector2(0, jumpForce));
             isJumping = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            isGrounded = false;
         }
     }
 }

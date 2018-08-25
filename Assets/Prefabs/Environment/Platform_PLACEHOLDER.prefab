@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4064694860753472}
   - component: {fileID: 212517849878727144}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: grassRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4551065534469010}
   - component: {fileID: 212755679982204542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: grassMid (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4991082803852470}
   - component: {fileID: 212131053253693744}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: grassMid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4185519473277522}
-  m_Layer: 0
+  - component: {fileID: 61720101426283402}
+  m_Layer: 8
   m_Name: Platform_PLACEHOLDER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4286654960529964}
   - component: {fileID: 212077673379142586}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: grassMid (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4794032931840912}
   - component: {fileID: 212008260063938500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: grassMid (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4213075301821782}
   - component: {fileID: 212273710162091584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: grassLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1307660416723140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.95, y: -2.972, z: 0}
+  m_LocalPosition: {x: -0.03, y: -2.972, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4213075301821782}
@@ -219,6 +220,31 @@ Transform:
   m_Father: {fileID: 4185519473277522}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61720101426283402
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307660416723140}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.093372464, y: 0.10861254}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.181897, y: 0.7827749}
+  m_EdgeRadius: 0
 --- !u!212 &212008260063938500
 SpriteRenderer:
   m_ObjectHideFlags: 1
