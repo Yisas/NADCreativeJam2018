@@ -183,4 +183,9 @@ public class PlayerController : MonoBehaviour
             // Play "scared of pitfall" sound
             audioSource.PlayOneShot(scaredAudioClip, 1);
     }
+
+    public void Die()
+    {
+        GManager.Instance.RespawnPlayer();
+    }
 }
