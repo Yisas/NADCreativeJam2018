@@ -53,3 +53,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   spawnPoint: {fileID: 0}
+  fadeOutDelayTime: 1.5
