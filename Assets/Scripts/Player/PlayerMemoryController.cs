@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMemoryController : MonoBehaviour {
+public class PlayerMemoryController : MonoBehaviour
+{
 
-    public enum MemoryTypes { None, Pitfall, Climb};
+    public enum MemoryTypes { None, Pitfall, Climb };
     private readonly int maxNumberOfMemories = 3;       // Mamimum amount of memories allowed
     private readonly int numOfMemoryTypes = 2;          // Number of memory types, disregarding "None"
 
@@ -17,8 +18,9 @@ public class PlayerMemoryController : MonoBehaviour {
 
     private List<MemoryTypes> memories = new List<MemoryTypes>();
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
         // Fill the memory list
         for (int i = 0; i < maxNumberOfMemories; i++)
@@ -26,25 +28,26 @@ public class PlayerMemoryController : MonoBehaviour {
             memories.Add(MemoryTypes.None);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         memoryChangeTimer -= Time.deltaTime;
 
-		if(memoryChangeTimer <= 0)
+        if (memoryChangeTimer <= 0)
         {
             AssignNewMemory(MemoryTypes.Pitfall);
 
             // get a new countdown to the next change
             memoryChangeTimer = Random.Range(minMemoryChangeTimer, maxMemoryChangeTimer);
         }
-	}
+    }
 
     void AssignNewMemory(MemoryTypes memory)
     {
         // Choose a new memory to asign
-        MemoryTypes memoryToAssign = (MemoryTypes) Random.Range(0, numOfMemoryTypes + 1);   // +1 since random funct is exclusive
+        MemoryTypes memoryToAssign = (MemoryTypes)Random.Range(0, numOfMemoryTypes + 1);   // +1 since random funct is exclusive
 
         // Choose a memory to change
         int memoryIndexToChange = 0;
@@ -55,13 +58,10 @@ public class PlayerMemoryController : MonoBehaviour {
             {
                 memoryIndexToChange = memoryCount;
                 memoryCount++;
-                MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange, memoryToAssign);
-                memories[memoryIndexToChange] = memoryToAssign;
-                return;
+                ApplyMemoryAtIndex(memoryIndexToChange, memoryToAssign);
             }
-            else
-                // ... nones are ignored until stack is filled
-                return;
+
+            return;
         }
         // ...  else change a random one
         else
@@ -73,38 +73,23 @@ public class PlayerMemoryController : MonoBehaviour {
         // Remove if none ...
         if (memoryToAssign == MemoryTypes.None)
         {
-            RemoveMemoryAtIndex(memoryIndexToChange);
-            memories[memoryIndexToChange] = MemoryTypes.None;
+            RemoveMemoryAtIndex(memoryIndexToChange);            
         }
         // ... else apply effect
         else
         {
-            // Update list
-            memories[memoryIndexToChange] = memoryToAssign;
-
-            // Don't apply same type twice
-            if (!memories.Contains(memoryToAssign))
-            {
-                Debug.Log("Applying memory " + memoryToAssign + " at index " + memoryIndexToChange);
-
-                switch (memoryToAssign)
-                {
-                    case MemoryTypes.Pitfall:
-                        ApplyPitfallMemory(true);
-                        break;
-                }
-            }
+            ApplyMemoryAtIndex(memoryIndexToChange, memoryToAssign);
         }
 
         // Display memory effect in UI
         MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange, memoryToAssign);
     }
 
-    private void RemoveMemoryAtIndex(int index)
+    private void RemoveMemoryAtIndex(int memoryIndexToChange)
     {
-        MemoryTypes priorMemory = memories[index];
+        MemoryTypes priorMemory = memories[memoryIndexToChange];
 
-        if(priorMemory == MemoryTypes.None)
+        if (priorMemory == MemoryTypes.None)
         {
             return;
         }
@@ -116,7 +101,35 @@ public class PlayerMemoryController : MonoBehaviour {
                     ApplyPitfallMemory(false);
                     break;
             }
+
+            // Update list
+            memories[memoryIndexToChange] = MemoryTypes.None;
+
+            // Display memory effect in UI
+            MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange, MemoryTypes.None);
         }
+    }
+
+    private void ApplyMemoryAtIndex(int memoryIndexToChange, MemoryTypes memoryToAssign)
+    {      
+        // Don't apply same type twice
+        if (!memories.Contains(memoryToAssign))
+        {
+            Debug.Log("Applying memory " + memoryToAssign + " at index " + memoryIndexToChange);
+
+            switch (memoryToAssign)
+            {
+                case MemoryTypes.Pitfall:
+                    ApplyPitfallMemory(true);
+                    break;
+            }
+        }
+
+        // Update list
+        memories[memoryIndexToChange] = memoryToAssign;
+
+        // Display memory effect in UI
+        MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange, memoryToAssign);
     }
 
     private void ApplyPitfallMemory(bool active)
