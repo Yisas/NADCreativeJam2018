@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMemoryController : MonoBehaviour
 {
+    public static PlayerMemoryController Instance;
 
     public enum MemoryTypes { None, Pitfall, Climb };
     private readonly int maxNumberOfMemories = 3;       // Mamimum amount of memories allowed
@@ -17,6 +18,14 @@ public class PlayerMemoryController : MonoBehaviour
     private int memoryCount = 0;
 
     private List<MemoryTypes> memories = new List<MemoryTypes>();
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     // Use this for initialization
     void Start()
@@ -146,5 +155,16 @@ public class PlayerMemoryController : MonoBehaviour
     private void ApplyClimbMemory(bool active)
     {
         PlayerController.Instance.LockUnlockClimbing(active);
+    }
+
+    /// <summary>
+    /// Remove them ALL
+    /// </summary>
+    public void FlushAllMemories()
+    {
+        for (int i = 0; i < memories.Count; i++)
+        {
+            RemoveMemoryAtIndex(i);
+        }
     }
 }

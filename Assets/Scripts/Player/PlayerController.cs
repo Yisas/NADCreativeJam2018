@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using XInputDotNetPure; 
+using XInputDotNetPure;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(AudioSource))]
@@ -186,6 +186,8 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        rb.velocity = new Vector2(0, 0);
+        PlayerMemoryController.Instance.FlushAllMemories();
         GManager.Instance.RespawnPlayer();
     }
 }
