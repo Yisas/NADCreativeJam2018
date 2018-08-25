@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance;
 
     public float moveSpeed;
+    public float climbSpeed;
     public float jumpForce;
 
     // States
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     // References
     private Rigidbody2D rb;
+    private float initGravityScale;
 
     void Awake()
     {
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        initGravityScale = rb.gravityScale;
     }
 
     // Update is called once per frame
@@ -39,11 +42,22 @@ public class PlayerController : MonoBehaviour
     {
 
         float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
         bool playerIsMovingCharacter = Mathf.Abs(horizontalInput) > 0;
 
         if (playerIsMovingCharacter)
         {
-            transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
+            // If not facing climbable, move normally...
+            if (!isFacingClimbable)
+                transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
+            // ... Else climb if moving right
+            else
+            {
+                if(horizontalInput >= 0)
+                {
+                    transform.Translate(new Vector3( 0, Time.deltaTime * climbSpeed * horizontalInput, 0));
+                }
+            }
         }
 
         if (Input.GetButtonDown("Jump"))
@@ -114,5 +128,10 @@ public class PlayerController : MonoBehaviour
     public void SetIsFacingClimbable(bool value)
     {
         isFacingClimbable = value;
+
+        if (value)
+            rb.gravityScale = 0;
+        else
+            rb.gravityScale = initGravityScale;
     }
 }
