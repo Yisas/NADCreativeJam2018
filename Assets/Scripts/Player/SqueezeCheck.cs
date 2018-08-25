@@ -11,7 +11,7 @@ public class SqueezeCheck : MonoBehaviour
 
         if (collision.transform.tag == "Squeezable")
         {
-            PlayerController.Instance.SetIsFacingClimbable(true);
+            PlayerController.Instance.SetIsSqueezing(true);
         }
     }
 
@@ -21,7 +21,7 @@ public class SqueezeCheck : MonoBehaviour
 
         if (collision.transform.tag == "Squeezable")
         {
-            PlayerController.Instance.SetIsFacingClimbable(false);
+            PlayerController.Instance.SetIsSqueezing(false);
         }
     }
 }

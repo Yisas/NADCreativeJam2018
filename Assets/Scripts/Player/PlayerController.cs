@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = false;
     private bool isInsidePitfallAproachZone = false;            // Is inside an area where the player is scared of jumping
     private bool isFacingClimbable = false;                     // When facing climbable, movement logic will change
+    private bool isSqueezing = false;                    // When facing squeezable, movement logic will change
 
     // Private attributes
     private float vibrationTimer = 0;
@@ -179,6 +180,13 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = 0;
         else
             rb.gravityScale = initGravityScale;
+    }
+
+    public void SetIsSqueezing(bool value)
+    {
+        isSqueezing = value;
+
+
     }
 
     /// <summary>
