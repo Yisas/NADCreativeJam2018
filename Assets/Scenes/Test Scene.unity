@@ -1070,6 +1070,24 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1268182449}
+    - target: {fileID: 114931694927482718, guid: 9aba161f8fd89094e9ad1fcb560acd22,
+        type: 2}
+      propertyPath: ptifallMemorySpriteAlternate
+      value: 
+      objectReference: {fileID: 21300000, guid: b7abc0eb99782d14cb0ed8b72f4a3ddb,
+        type: 3}
+    - target: {fileID: 114931694927482718, guid: 9aba161f8fd89094e9ad1fcb560acd22,
+        type: 2}
+      propertyPath: climbingMemorySpriteAlternate
+      value: 
+      objectReference: {fileID: 21300000, guid: e003a40d38b850c4fa3c0038155bc651,
+        type: 3}
+    - target: {fileID: 114931694927482718, guid: 9aba161f8fd89094e9ad1fcb560acd22,
+        type: 2}
+      propertyPath: pitfallMemorySpriteAlternate
+      value: 
+      objectReference: {fileID: 21300000, guid: b7abc0eb99782d14cb0ed8b72f4a3ddb,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9aba161f8fd89094e9ad1fcb560acd22, type: 2}
   m_IsPrefabParent: 0

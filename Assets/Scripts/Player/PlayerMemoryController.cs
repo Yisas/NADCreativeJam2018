@@ -6,9 +6,9 @@ public class PlayerMemoryController : MonoBehaviour
 {
     public static PlayerMemoryController Instance;
 
-    public enum MemoryTypes { None, Pitfall, Climb };
+    public enum MemoryTypes { None, Pitfall, Climb, PitfallBoost, ClimbBoost };
     public static readonly int maxNumberOfMemories = 3;       // Mamimum amount of memories allowed
-    private readonly int numOfMemoryTypes = 2;          // Number of memory types, disregarding "None"
+    private readonly int numOfMemoryTypes = 5;          // Number of memory types, disregarding "None"
 
     public float minMemoryChangeTimer;
     public float maxMemoryChangeTimer;
@@ -90,8 +90,14 @@ public class PlayerMemoryController : MonoBehaviour
                 case MemoryTypes.Pitfall:
                     ApplyPitfallMemory(false);
                     break;
+                case MemoryTypes.PitfallBoost:
+                    ApplyPitfallMemory(true);
+                    break;
                 case MemoryTypes.Climb:
                     ApplyClimbMemory(false);
+                    break;
+                case MemoryTypes.ClimbBoost:
+                    ApplyClimbMemory(true);
                     break;
             }
 
@@ -121,8 +127,14 @@ public class PlayerMemoryController : MonoBehaviour
                 case MemoryTypes.Pitfall:
                     ApplyPitfallMemory(true);
                     break;
+                case MemoryTypes.PitfallBoost:
+                    ApplyPitfallMemory(false);
+                    break;
                 case MemoryTypes.Climb:
                     ApplyClimbMemory(true);
+                    break;
+                case MemoryTypes.ClimbBoost:
+                    ApplyClimbMemory(false);
                     break;
             }
 
