@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33167139812315226}
   - component: {fileID: 64403521419692348}
   - component: {fileID: 23227079003493818}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4451412595700554}
   - component: {fileID: 33022323706170972}
   - component: {fileID: 23348222829995530}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4688433216773408}
   - component: {fileID: 212057784544809088}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Eye Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,9 @@ GameObject:
   - component: {fileID: 4712883720770560}
   - component: {fileID: 61287324913596748}
   - component: {fileID: 114018723059875008}
-  m_Layer: 10
+  - component: {fileID: 114797017042234254}
+  - component: {fileID: 114273158035190688}
+  m_Layer: 9
   m_Name: ClimbCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4333984424380654}
   - component: {fileID: 212540384734479704}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Right Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +107,7 @@ GameObject:
   - component: {fileID: 4017883201709370}
   - component: {fileID: 33629879135676570}
   - component: {fileID: 23211964462495786}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +124,7 @@ GameObject:
   - component: {fileID: 4763312432557632}
   - component: {fileID: 33128718034894346}
   - component: {fileID: 23403624152805760}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4744281249544870}
   - component: {fileID: 212766295685591730}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Right Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4260857293609402}
   - component: {fileID: 212000664242851078}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Left Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,8 +171,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4552606184730346}
-  m_Layer: 10
-  m_Name: Target
+  m_Layer: 9
+  m_Name: PlayerAnchorBuddyAI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4747889828938076}
   - component: {fileID: 212815687960913230}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Right Thumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4795818746572350}
   - component: {fileID: 212855633728141238}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Right Thumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +218,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4971161304044536}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +235,7 @@ GameObject:
   - component: {fileID: 4726204915070806}
   - component: {fileID: 33563528625183896}
   - component: {fileID: 23214569384445414}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4197241917648640}
   - component: {fileID: 212292473945760814}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +266,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4987361775503530}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4678076516673198}
   - component: {fileID: 212386638381474724}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Bag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4186498516139994}
   - component: {fileID: 212305674508814508}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Eye Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +319,7 @@ GameObject:
   - component: {fileID: 114200237293051444}
   - component: {fileID: 114219941424015546}
   - component: {fileID: 82166506279608270}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -332,7 +334,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4131087643227270}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +351,7 @@ GameObject:
   - component: {fileID: 4348790593938494}
   - component: {fileID: 33500802532588540}
   - component: {fileID: 23862188045515940}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4026876984309272}
   - component: {fileID: 212300759139312702}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Machine Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +382,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4440960561193828}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4008039875848044}
   - component: {fileID: 212099388735412738}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Left Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +415,7 @@ GameObject:
   - component: {fileID: 4842052996772328}
   - component: {fileID: 33954223649133640}
   - component: {fileID: 23432364594017178}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +512,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1537106368881400}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.37, z: 0}
+  m_LocalPosition: {x: 0, y: -1.3793592, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4726204915070806}
@@ -528,7 +530,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1337521632286800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6, y: -2.26, z: 0}
+  m_LocalPosition: {x: -0.63, y: -2.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4348790593938494}
@@ -542,7 +544,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221214373687538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6, y: -2.26, z: -0.061}
+  m_LocalPosition: {x: 0.62, y: -2.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4017883201709370}
@@ -569,7 +571,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1914648466559536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.12}
+  m_LocalPosition: {x: 0, y: -0.016378738, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4842052996772328}
@@ -597,7 +599,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1383580721470466}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.44, y: 2.64, z: 0}
+  m_LocalPosition: {x: -2.44, y: 2.64, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4675050713690490}
@@ -1264,6 +1266,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minMemoryChangeTimer: 1
   maxMemoryChangeTimer: 2
+--- !u!114 &114273158035190688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1213563544975488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5cf9d6734179a948ade74ae37dda8b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114797017042234254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1213563544975488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5cf9d6734179a948ade74ae37dda8b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000664242851078
 SpriteRenderer:
   m_ObjectHideFlags: 1
