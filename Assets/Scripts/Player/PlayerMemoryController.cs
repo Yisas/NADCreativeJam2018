@@ -123,13 +123,13 @@ public class PlayerMemoryController : MonoBehaviour
                     ApplyPitfallMemory(true);
                     break;
             }
+
+            // Update list
+            memories[memoryIndexToChange] = memoryToAssign;
+
+            // Display memory effect in UI
+            MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange, memoryToAssign);
         }
-
-        // Update list
-        memories[memoryIndexToChange] = memoryToAssign;
-
-        // Display memory effect in UI
-        MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange, memoryToAssign);
     }
 
     private void ApplyPitfallMemory(bool active)
