@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private AudioSource audioSource;
     private float initGravityScale;
-    private Vector3 leftVector = new Vector3(-1, 1, 1);
 
     void Awake()
     {
@@ -52,9 +51,40 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    void FixedUpdate()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+
+        if (horizontalInput > 0f)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (horizontalInput < 0f)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+
+        isGrounded = Mathf.Abs(rb.velocity.y) == 0;
+
+        if (isJumping)
+        {
+            rb.AddForce(new Vector2(0, jumpForce));
+            isJumping = false;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (isSqueezing)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(transform.localScale.x, 0.01f, 0.5f), transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
+        }
+
         // Reset vibration
         if (vibrationTimer > 0)
         {
@@ -68,16 +98,7 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         bool playerIsMovingCharacter = Mathf.Abs(horizontalInput) > 0;
-
-        if (horizontalInput > 0)
-        {
-            transform.localScale = Vector3.one;
-        }
-        else if (horizontalInput < 0)
-        {
-            transform.localScale = leftVector;
-        }
-
+        
         if (playerIsMovingCharacter)
         {
             // If not facing climbable, or moving left, move normally...
@@ -108,18 +129,6 @@ public class PlayerController : MonoBehaviour
                 isJumping = true;
                 isGrounded = false;
             }
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        isGrounded = Mathf.Abs(rb.velocity.y) == 0;
-
-
-        if (isJumping)
-        {
-            rb.AddForce(new Vector2(0, jumpForce));
-            isJumping = false;
         }
     }
 
@@ -186,7 +195,14 @@ public class PlayerController : MonoBehaviour
     {
         isSqueezing = value;
 
-
+        if (isSqueezing)
+        {
+            rb.gravityScale = initGravityScale * 4;
+        }
+        else
+        {
+            rb.gravityScale = initGravityScale;
+        }
     }
 
     /// <summary>
