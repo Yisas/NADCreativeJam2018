@@ -148,10 +148,16 @@ public class PlayerMemoryController : MonoBehaviour
     /// </summary>
     public void FlushAllMemories()
     {
-        for (int i = 0; i < memories.Count; i++)
+        int prevNumOfMemories = memories.Count;
+
+        for (int i = 0; i < prevNumOfMemories; i++)
         {
             RemoveMemory();
         }
+
+        ApplyPitfallMemory(false);
+        ApplyClimbMemory(false);
+        MemoryCanvasController.instance.FlushMemories();
     }
 
     /// <summary>
@@ -159,6 +165,6 @@ public class PlayerMemoryController : MonoBehaviour
     /// </summary>
     private void CycleMemory()
     {
-        RemoveMemory();
+        FlushAllMemories();
     }
 }
