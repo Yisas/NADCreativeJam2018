@@ -8,6 +8,7 @@ TagManager:
   - PitfallAproach
   - ClimbCheck
   - Climbable
+  - Squeezable
   layers:
   - Default
   - TransparentFX
@@ -18,9 +19,9 @@ TagManager:
   - 
   - 
   - Ground
-  - 
-  - 
-  - 
+  - Player
+  - BuddyAI
+  - Floating
   - 
   - 
   - 

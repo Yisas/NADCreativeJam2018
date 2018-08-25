@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private AudioSource audioSource;
     private float initGravityScale;
+    private Vector3 leftVector = new Vector3(-1, 1, 1);
 
     void Awake()
     {
@@ -66,6 +67,15 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         bool playerIsMovingCharacter = Mathf.Abs(horizontalInput) > 0;
+
+        if (horizontalInput > 0)
+        {
+            transform.localScale = Vector3.one;
+        }
+        else if (horizontalInput < 0)
+        {
+            transform.localScale = leftVector;
+        }
 
         if (playerIsMovingCharacter)
         {
