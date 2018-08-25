@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isSqueezing)
         {
-            transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(transform.localScale.x, 0.01f, 0.5f), transform.localScale.z);
+            transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(transform.localScale.y, 0.5f, 0.5f), transform.localScale.z);
         }
         else
         {
@@ -194,15 +194,6 @@ public class PlayerController : MonoBehaviour
     public void SetIsSqueezing(bool value)
     {
         isSqueezing = value;
-
-        if (isSqueezing)
-        {
-            rb.gravityScale = initGravityScale * 4;
-        }
-        else
-        {
-            rb.gravityScale = initGravityScale;
-        }
     }
 
     /// <summary>
