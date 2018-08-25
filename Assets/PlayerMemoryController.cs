@@ -33,6 +33,8 @@ public class PlayerMemoryController : MonoBehaviour {
 
     void AssignNewMemory(MemoryTypes memory)
     {
-        
+        // Choose which memory index to change
+        int memoryIndexToChange = Random.Range(0, 2);
+        MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange);
     }
 }
