@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class MemoryCanvasController : MonoBehaviour
 {
-
     public static MemoryCanvasController instance;
 
     public Image[] memorySprites;
     public Sprite pitfallMemorySprite;
     public Sprite climbingMemorySprite;
+
+    private int memoryCount = 0;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class MemoryCanvasController : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="memoryIndexToChange">Starts with 0</param>
-    public void ChangeMemory(int memoryIndexToChange, PlayerMemoryController.MemoryTypes memoryType)
+    private void ChangeMemoryAtIndex(int memoryIndexToChange, PlayerMemoryController.MemoryTypes memoryType)
     {
         switch (memoryType)
         {
@@ -52,4 +53,12 @@ public class MemoryCanvasController : MonoBehaviour
         }
     }
 
+    public void ChangeMemory(PlayerMemoryController.MemoryTypes memoryType)
+    {
+        if(memoryCount < PlayerMemoryController.maxNumberOfMemories)
+        {
+            ChangeMemoryAtIndex(memoryCount, memoryType);
+            memoryCount++;
+        }
+    }
 }

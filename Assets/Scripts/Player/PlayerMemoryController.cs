@@ -7,34 +7,20 @@ public class PlayerMemoryController : MonoBehaviour
     public static PlayerMemoryController Instance;
 
     public enum MemoryTypes { None, Pitfall, Climb };
-    private readonly int maxNumberOfMemories = 3;       // Mamimum amount of memories allowed
+    public static readonly int maxNumberOfMemories = 3;       // Mamimum amount of memories allowed
     private readonly int numOfMemoryTypes = 2;          // Number of memory types, disregarding "None"
 
     public float minMemoryChangeTimer;
     public float maxMemoryChangeTimer;
     private float memoryChangeTimer = 0;
 
-    // How many memories you have
-    private int memoryCount = 0;
-
-    private List<MemoryTypes> memories = new List<MemoryTypes>();
+    private Queue<MemoryTypes> memories = new Queue<MemoryTypes>();
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-        }
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-        // Fill the memory list
-        for (int i = 0; i < maxNumberOfMemories; i++)
-        {
-            memories.Add(MemoryTypes.None);
         }
     }
 
@@ -51,55 +37,48 @@ public class PlayerMemoryController : MonoBehaviour
 
         if (memoryChangeTimer <= 0)
         {
-            AssignNewMemory(MemoryTypes.Pitfall);
+            AssignNewMemory();
 
             // get a new countdown to the next change
             memoryChangeTimer = Random.Range(minMemoryChangeTimer, maxMemoryChangeTimer);
         }
     }
 
-    void AssignNewMemory(MemoryTypes memory)
+    void AssignNewMemory()
     {
         // Choose a new memory to asign
         MemoryTypes memoryToAssign = (MemoryTypes)Random.Range(0, numOfMemoryTypes + 1);   // +1 since random funct is exclusive
 
-        // Choose a memory to change
-        int memoryIndexToChange = 0;
         // If the memory stack is not full, occupy an empty one...
-        if (memoryCount < maxNumberOfMemories)
+        if (memories.Count < maxNumberOfMemories)
         {
             if (memoryToAssign != MemoryTypes.None)
             {
-                memoryIndexToChange = memoryCount;
-                memoryCount++;
-                ApplyMemoryAtIndex(memoryIndexToChange, memoryToAssign);
+                ApplyMemory(memoryToAssign, false);
             }
 
             return;
-        }
-        // ...  else change a random one
-        else
-        {
-            memoryIndexToChange = Random.Range(0, maxNumberOfMemories);
         }
 
         // Apply memory effect
         // Remove if none ...
         if (memoryToAssign == MemoryTypes.None)
         {
-            RemoveMemoryAtIndex(memoryIndexToChange);
+            RemoveMemory();
         }
         // ... else apply effect
         else
         {
-            ApplyMemoryAtIndex(memoryIndexToChange, memoryToAssign);
+            ApplyMemory(memoryToAssign);
         }
     }
 
-    private void RemoveMemoryAtIndex(int memoryIndexToChange)
+    private void RemoveMemory()
     {
-        MemoryTypes priorMemory = memories[memoryIndexToChange];
+        if (memories.Count == 0)
+            return;
 
+        MemoryTypes priorMemory = memories.Dequeue();
         if (priorMemory == MemoryTypes.None)
         {
             return;
@@ -116,23 +95,26 @@ public class PlayerMemoryController : MonoBehaviour
                     break;
             }
 
-            // Update list
-            memories[memoryIndexToChange] = MemoryTypes.None;
-
             // Display memory effect in UI
-            MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange, MemoryTypes.None);
+            MemoryCanvasController.instance.ChangeMemory(MemoryTypes.None);
         }
     }
 
-    private void ApplyMemoryAtIndex(int memoryIndexToChange, MemoryTypes memoryToAssign)
+    /// <summary>
+    /// Removes the prior one by default
+    /// </summary>
+    /// <param name="memoryToAssign"></param>
+    /// <param name="remove"></param>
+    private void ApplyMemory(MemoryTypes memoryToAssign, bool remove = true)
     {
         // Don't apply same type twice
         if (!memories.Contains(memoryToAssign))
         {
-            Debug.Log("Applying memory " + memoryToAssign + " at index " + memoryIndexToChange);
+            Debug.Log("Applying memory " + memoryToAssign);
 
             // Remove prior memory
-            RemoveMemoryAtIndex(memoryIndexToChange);
+            if (remove)
+                RemoveMemory();
 
             switch (memoryToAssign)
             {
@@ -145,10 +127,10 @@ public class PlayerMemoryController : MonoBehaviour
             }
 
             // Update list
-            memories[memoryIndexToChange] = memoryToAssign;
+            memories.Enqueue(memoryToAssign);
 
             // Display memory effect in UI
-            MemoryCanvasController.instance.ChangeMemory(memoryIndexToChange, memoryToAssign);
+            MemoryCanvasController.instance.ChangeMemory(memoryToAssign);
         }
     }
 
@@ -169,7 +151,7 @@ public class PlayerMemoryController : MonoBehaviour
     {
         for (int i = 0; i < memories.Count; i++)
         {
-            RemoveMemoryAtIndex(i);
+            RemoveMemory();
         }
     }
 
@@ -178,16 +160,6 @@ public class PlayerMemoryController : MonoBehaviour
     /// </summary>
     private void CycleMemory()
     {
-        int i = 0;
-        foreach (MemoryTypes m in memories)
-        {
-            if (m != MemoryTypes.None)
-            {
-                RemoveMemoryAtIndex(i);
-                return;
-            }
-
-            i++;
-        }
+        RemoveMemory();
     }
 }
