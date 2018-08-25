@@ -189,7 +189,11 @@ MonoBehaviour:
   - {fileID: 114357067884643456}
   pitfallMemorySprite: {fileID: 21300000, guid: d12afc00e6e29ea48a52a7fdd53b9718,
     type: 3}
+  pitfallMemorySpriteAlternate: {fileID: 21300000, guid: b7abc0eb99782d14cb0ed8b72f4a3ddb,
+    type: 3}
   climbingMemorySprite: {fileID: 21300000, guid: 2f25cb910733bcf4788722aaacf166c1,
+    type: 3}
+  climbingMemorySpriteAlternate: {fileID: 21300000, guid: e003a40d38b850c4fa3c0038155bc651,
     type: 3}
 --- !u!114 &114941224004023480
 MonoBehaviour:
