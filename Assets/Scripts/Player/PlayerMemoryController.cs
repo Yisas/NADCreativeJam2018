@@ -197,4 +197,19 @@ public class PlayerMemoryController : MonoBehaviour
     {
         FlushAllMemories();
     }
+
+    public void ComputeScore()
+    {
+        int scoreCount = 0;
+
+        foreach (MemoryTypes m in memories)
+        {
+            if (m == MemoryTypes.ClimbBoost || m == MemoryTypes.PitfallBoost)
+            {
+                scoreCount++;
+            }
+        }
+
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GManager>().IncreaseScore(scoreCount);
+    }
 }

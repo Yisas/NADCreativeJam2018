@@ -9,10 +9,15 @@ public class GManager : MonoBehaviour
     public Transform spawnPoint;
     public float fadeOutDelayTime;
 
-    private int score = 0;
+    private static int score = 0;
     private static int currentSceneBuildIndex = 0;
     private float fadeOutTimer = 0;
     private bool sceneTransitionTriggered = false;
+
+    private void Start()
+    {
+        SetScore(score);
+    }
 
     private void Update()
     {
@@ -48,6 +53,12 @@ public class GManager : MonoBehaviour
     {
         score += amount;
         GameObject.FindGameObjectWithTag("UICanvas").GetComponent<MainUIController>().IncreaseScore(amount);
+    }
+
+    public void SetScore(int amount)
+    {
+        score = amount;
+        GameObject.FindGameObjectWithTag("UICanvas").GetComponent<MainUIController>().SetScore(amount);
     }
 
     public void NextScene()

@@ -31,6 +31,11 @@ public class MainUIController : MonoBehaviour
         scoreText.text = (int.Parse(scoreText.text) + amount).ToString();
     }
 
+    public void SetScore(int amount)
+    {
+        scoreText.text = amount.ToString();
+    }
+
     IEnumerator FadeInCoroutine()
     {
         for (float f = 1f; f >= 0; f -= fadeSpeed)
