@@ -132,8 +132,6 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    // Don't animate movement when scared
-                    anim.SetFloat("walkingSpeed", 0);
                     ScaredFeedback();
                 }
             }
@@ -240,6 +238,8 @@ public class PlayerController : MonoBehaviour
             // Play "scared of pitfall" sound
             audioSource.PlayOneShot(scaredAudioClip, 1);
 
+        // Don't animate movement when scared
+        anim.SetFloat("walkingSpeed", 0);
         anim.SetTrigger("scared");
     }
 
