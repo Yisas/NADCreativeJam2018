@@ -128,9 +128,12 @@ public class PlayerController : MonoBehaviour
                     transform.Translate(vectorControl, 0);
 
                     anim.SetBool("climbing", true);
+                    anim.SetFloat("walkingSpeed", Mathf.Abs(horizontalInput));
                 }
                 else
                 {
+                    // Don't animate movement when scared
+                    anim.SetFloat("walkingSpeed", 0);
                     ScaredFeedback();
                 }
             }
