@@ -717,7 +717,7 @@ Transform:
   - {fileID: 4691157569055780}
   m_Father: {fileID: 4125338714051240}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 4.974751e-10, y: -0.00000019525515, z: 0.14589751}
+  m_LocalEulerAnglesHint: {x: 0.041744422, y: -17.003214, z: 0.13602525}
 --- !u!4 &4218826347809162
 Transform:
   m_ObjectHideFlags: 1
@@ -1383,7 +1383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
-  climbSpeed: 40
+  climbSpeed: 15
   jumpForce: 1000
   scaredAudioClip: {fileID: 8300000, guid: cd5a432c039449b4f990b452e8fdc0bb, type: 3}
   vibrationInterval: 0.3

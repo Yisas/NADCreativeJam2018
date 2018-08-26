@@ -23,11 +23,13 @@ public class PlayerMemoryController : MonoBehaviour
     // References
     private PlayerController playerController;
     private MemoryCanvasController memoryCanvasController;
+    private Animator anim;
 
     private void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         memoryCanvasController = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<MemoryCanvasController>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -167,6 +169,8 @@ public class PlayerMemoryController : MonoBehaviour
 
         if (prevNumOfMemories > 0)
         {
+            anim.SetTrigger("vomit");
+
             for (int i = 0; i < prevNumOfMemories; i++)
             {
                 GameObject go = GameObject.Instantiate(bouncingMemory, transform.position, bouncingMemory.transform.rotation);
