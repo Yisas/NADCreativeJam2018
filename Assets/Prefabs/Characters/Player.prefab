@@ -993,7 +993,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803925872863546}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4881337537762068}
@@ -1006,7 +1006,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1200538191506344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.85, y: -1.32, z: 0}
+  m_LocalPosition: {x: -0.02, y: -1.29, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 4684046639683878}
@@ -1413,6 +1413,7 @@ MonoBehaviour:
   climbSpeed: 15
   jumpForce: 1000
   scaredAudioClip: {fileID: 8300000, guid: cd5a432c039449b4f990b452e8fdc0bb, type: 3}
+  deathAudioClip: {fileID: 8300000, guid: e0417a5d0742a404a89e06830a30dec6, type: 3}
   vibrationInterval: 0.3
   vibrationIntensity: 0.4
   stadingCollider: {fileID: 61377588783617664}

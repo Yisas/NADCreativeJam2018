@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
 
     public AudioClip scaredAudioClip;
+    public AudioClip deathAudioClip;
 
     public float vibrationInterval;
     public float vibrationIntensity;
@@ -244,6 +245,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMemoryController>().FlushAllMemories();
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GManager>().RespawnPlayer();
+        audioSource.PlayOneShot(deathAudioClip, 0.2f);
     }
 
     public void Rumble(float vibrationIntensity, float vibrationDuration)
