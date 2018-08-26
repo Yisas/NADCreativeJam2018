@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 114797017042234254}
   - component: {fileID: 114273158035190688}
   - component: {fileID: 114908628019002464}
+  - component: {fileID: 114926828438289266}
   m_Layer: 9
   m_Name: ClimbCheck
   m_TagString: Untagged
@@ -1303,6 +1304,8 @@ MonoBehaviour:
   bouncingMemorySpawnPosition: {fileID: 4052468513129836}
   bouncingMemory: {fileID: 1917142730992464, guid: f1b3f631b6982034aacc2a72f4e4b0e8,
     type: 2}
+  flushVibrationIntensity: 0.2
+  flushVibrationDuration: 0.5
 --- !u!114 &114273158035190688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1326,6 +1329,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114908628019002464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1213563544975488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5cf9d6734179a948ade74ae37dda8b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114926828438289266
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

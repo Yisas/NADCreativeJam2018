@@ -227,6 +227,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void ScaredFeedback()
     {
+        Rumble(vibrationIntensity, vibrationInterval);
         GamePad.SetVibration(0, vibrationIntensity, vibrationIntensity);
         vibrationTimer = vibrationInterval;
 
@@ -240,5 +241,11 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
         PlayerMemoryController.Instance.FlushAllMemories();
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GManager>().RespawnPlayer();
+    }
+
+    public void Rumble(float vibrationIntensity, float vibrationDuration)
+    {
+        GamePad.SetVibration(0, vibrationIntensity, vibrationIntensity);
+        vibrationTimer = vibrationDuration;
     }
 }

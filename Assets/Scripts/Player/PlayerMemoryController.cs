@@ -16,6 +16,8 @@ public class PlayerMemoryController : MonoBehaviour
 
     public Transform bouncingMemorySpawnPosition;
     public GameObject bouncingMemory;
+    public float flushVibrationIntensity;
+    public float flushVibrationDuration;
 
     private Queue<MemoryTypes> memories = new Queue<MemoryTypes>();
 
@@ -162,12 +164,15 @@ public class PlayerMemoryController : MonoBehaviour
     {
         int prevNumOfMemories = memories.Count;
 
-        if(prevNumOfMemories > 0)
+        if (prevNumOfMemories > 0)
         {
             for (int i = 0; i < prevNumOfMemories; i++)
             {
                 GameObject go = GameObject.Instantiate(bouncingMemory, transform.position, bouncingMemory.transform.rotation);
             }
+
+            // Rumble
+            PlayerController.Instance.GetComponent<PlayerController>().Rumble(flushVibrationIntensity, flushVibrationDuration);
         }
 
         for (int i = 0; i < prevNumOfMemories; i++)
