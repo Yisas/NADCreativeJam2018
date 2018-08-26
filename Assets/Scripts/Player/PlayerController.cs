@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     // References
     private Rigidbody2D rb;
     private AudioSource audioSource;
+    private Animator anim;
     private float initGravityScale;
 
     // Use this for initialization
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         initGravityScale = rb.gravityScale;
         audioSource = GetComponent<AudioSource>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     void FixedUpdate()
@@ -101,7 +103,7 @@ public class PlayerController : MonoBehaviour
                     // ... no moving towards pitfall if scared ...
                     if (Mathf.Sign(horizontalInput) != Mathf.Sign(pitfallDirection.x))
                     {
-                        transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
+                        Move(horizontalInput);
                     }
                     else
                     {
@@ -110,7 +112,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
+                    Move(horizontalInput);
                 }
 
 
@@ -131,6 +133,11 @@ public class PlayerController : MonoBehaviour
                     ScaredFeedback();
                 }
             }
+        }
+        else
+        {
+            // Don't animate movement when stopped
+            anim.SetFloat("walkingSpeed", 0);
         }
 
         if (Input.GetButtonDown("Jump"))
@@ -237,5 +244,12 @@ public class PlayerController : MonoBehaviour
     {
         GamePad.SetVibration(0, vibrationIntensity, vibrationIntensity);
         vibrationTimer = vibrationDuration;
+    }
+
+    private void Move(float horizontalInput)
+    {
+        transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
+
+        anim.SetFloat("walkingSpeed", Mathf.Abs(horizontalInput));
     }
 }
