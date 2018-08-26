@@ -17,6 +17,7 @@ public class PlayerMemoryController : MonoBehaviour
     public GameObject bouncingMemory;
     public float flushVibrationIntensity;
     public float flushVibrationDuration;
+    public AudioClip vomitAudioClip;
 
     private Queue<MemoryTypes> memories = new Queue<MemoryTypes>();
 
@@ -24,12 +25,14 @@ public class PlayerMemoryController : MonoBehaviour
     private PlayerController playerController;
     private MemoryCanvasController memoryCanvasController;
     private Animator anim;
+    private AudioSource audioSource;
 
     private void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         memoryCanvasController = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<MemoryCanvasController>();
         anim = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -170,6 +173,7 @@ public class PlayerMemoryController : MonoBehaviour
         if (prevNumOfMemories > 0)
         {
             anim.SetTrigger("vomit");
+            audioSource.PlayOneShot(vomitAudioClip);
 
             for (int i = 0; i < prevNumOfMemories; i++)
             {
