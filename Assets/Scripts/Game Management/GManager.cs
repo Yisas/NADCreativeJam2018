@@ -9,6 +9,7 @@ public class GManager : MonoBehaviour
     public Transform spawnPoint;
     public float fadeOutDelayTime;
 
+    private int score = 0;
     private static int currentSceneBuildIndex = 0;
     private float fadeOutTimer = 0;
     private bool sceneTransitionTriggered = false;
@@ -18,6 +19,11 @@ public class GManager : MonoBehaviour
         if (Input.GetButtonDown("Next Level"))
         {
             NextScene();
+        }
+
+        if (Input.GetButtonDown("Test Button"))
+        {
+            IncreaseScore();
         }
 
         if (sceneTransitionTriggered)
@@ -36,6 +42,12 @@ public class GManager : MonoBehaviour
     public void RespawnPlayer()
     {
         player.transform.position = spawnPoint.transform.position;
+    }
+
+    public void IncreaseScore(int amount = 1)
+    {
+        score += amount;
+        GameObject.FindGameObjectWithTag("UICanvas").GetComponent<MainUIController>().IncreaseScore(amount);
     }
 
     public void NextScene()

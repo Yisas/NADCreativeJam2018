@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainUIController : MonoBehaviour {
-
+public class MainUIController : MonoBehaviour
+{
     public Image blackSprite;
     public float fadeSpeed = 0.05f;
 
-	// Use this for initialization
-	void Start () {
+    public Text scoreText;
+
+    // Use this for initialization
+    void Start()
+    {
         FadeIn();
-	}
+    }
 
     public void FadeIn()
     {
@@ -21,6 +24,11 @@ public class MainUIController : MonoBehaviour {
     public void FadeOut()
     {
         StartCoroutine("FadeOutCoroutine");
+    }
+
+    public void IncreaseScore(int amount = 1)
+    {
+        scoreText.text = (int.Parse(scoreText.text) + amount).ToString();
     }
 
     IEnumerator FadeInCoroutine()
