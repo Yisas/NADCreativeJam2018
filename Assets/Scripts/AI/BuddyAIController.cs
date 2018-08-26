@@ -18,7 +18,7 @@ public class BuddyAIController : MonoBehaviour {
 
             if (distance < 1.5f)
             {
-                Destroy(target.gameObject);
+                Destroy(target.parent.gameObject);
                 target = playerAnchor;
                 PlayerMemoryController.Instance.AssignNewMemory();
             }
