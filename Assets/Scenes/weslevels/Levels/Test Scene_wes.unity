@@ -321,7 +321,7 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1158543017}
     - target: {fileID: 114551062133353680, guid: 8155fcdd5469a394db41fbf2e5d4b7a5,
         type: 2}
       propertyPath: spawnPoint
@@ -2836,6 +2836,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4625034960133338, guid: d59d52b6228a6c44a9f3b07273f12216,
     type: 2}
   m_PrefabInternal: {fileID: 1158543011}
+--- !u!114 &1158543017 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114579811431635066, guid: d59d52b6228a6c44a9f3b07273f12216,
+    type: 2}
+  m_PrefabInternal: {fileID: 1158543011}
+  m_Script: {fileID: 11500000, guid: bbd48e640db3c244886e740a4f98bbdc, type: 3}
 --- !u!1 &1169900563
 GameObject:
   m_ObjectHideFlags: 0
