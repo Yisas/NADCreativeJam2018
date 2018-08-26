@@ -24,6 +24,11 @@ public class MemoryCanvasController : MonoBehaviour
     /// <param name="memoryIndexToChange">Starts with 0</param>
     private void ChangeMemoryAtIndex(int memoryIndexToChange, PlayerMemoryController.MemoryTypes memoryType)
     {
+        // Hide or show empty image
+        Color c = memorySprites[memoryIndexToChange].color;
+        c.a = (memoryType == PlayerMemoryController.MemoryTypes.None ? 0 : 1);
+        memorySprites[memoryIndexToChange].color = c;
+
         switch (memoryType)
         {
             case PlayerMemoryController.MemoryTypes.None:
@@ -51,6 +56,11 @@ public class MemoryCanvasController : MonoBehaviour
     private void ChangeMemoryAtIndex(int memoryIndexToChange, Sprite spriteToApply)
     {
         memorySprites[memoryIndexToChange].sprite = spriteToApply;
+
+        // Hide or show empty image
+        Color c = memorySprites[memoryIndexToChange].color;
+        c.a = (spriteToApply == null ? 0 : 1);
+        memorySprites[memoryIndexToChange].color = c;
     }
 
     public void ChangeMemory(PlayerMemoryController.MemoryTypes memoryType)
