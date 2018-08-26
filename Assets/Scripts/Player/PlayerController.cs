@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     public float vibrationInterval;
     public float vibrationIntensity;
 
+    public BoxCollider2D stadingCollider;
+    public BoxCollider2D crawlingCollider;
+
     // States
     private bool isJumpLockedWhenNearPitfall = false;
     public bool isClimbLocked = false;
@@ -214,6 +217,10 @@ public class PlayerController : MonoBehaviour
     public void SetIsSqueezing(bool value)
     {
         isSqueezing = value;
+
+        // Toggle colliders
+        stadingCollider.enabled = !value;
+        crawlingCollider.enabled = value;
     }
 
     /// <summary>

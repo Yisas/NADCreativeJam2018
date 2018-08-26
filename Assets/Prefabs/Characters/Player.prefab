@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 114579811431635066}
   - component: {fileID: 114131615652787722}
   - component: {fileID: 61377588783617664}
+  - component: {fileID: 61326733391964714}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -824,7 +825,7 @@ Transform:
   - {fileID: 4902784296173370}
   m_Father: {fileID: 4125338714051240}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -89.080154, y: -9.152161, z: -137.02164}
+  m_LocalEulerAnglesHint: {x: -71.73365, y: -95.24924, z: -149.56128}
 --- !u!4 &4617089245480830
 Transform:
   m_ObjectHideFlags: 1
@@ -864,7 +865,7 @@ Transform:
   - {fileID: 4749022456589640}
   m_Father: {fileID: 4823125087423586}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.000000098248094, y: -0.000006207684, z: -93.52974}
+  m_LocalEulerAnglesHint: {x: -0.000003510045, y: -0.000002429529, z: -145.31071}
 --- !u!4 &4684046639683878
 Transform:
   m_ObjectHideFlags: 1
@@ -944,7 +945,7 @@ Transform:
   - {fileID: 4663558047940890}
   m_Father: {fileID: 4125338714051240}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -79.18347, y: 170.84985, z: 42.976322}
+  m_LocalEulerAnglesHint: {x: -71.005585, y: -59.989082, z: -14.726836}
 --- !u!4 &4838506275055920
 Transform:
   m_ObjectHideFlags: 1
@@ -1042,7 +1043,7 @@ Transform:
   - {fileID: 4332470438261586}
   m_Father: {fileID: 4601688480400340}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.00000034879355, y: -0.0000059796257, z: -93.52971}
+  m_LocalEulerAnglesHint: {x: 0.000008287757, y: 0.0000014370572, z: -25.869577}
 --- !u!4 &4919058873702158
 Transform:
   m_ObjectHideFlags: 1
@@ -1162,6 +1163,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &61326733391964714
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1200538191506344}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.47954035, y: 0.58003306}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.4300795, y: 2.0931225}
+  m_EdgeRadius: 0
 --- !u!61 &61377588783617664
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1389,6 +1415,8 @@ MonoBehaviour:
   scaredAudioClip: {fileID: 8300000, guid: cd5a432c039449b4f990b452e8fdc0bb, type: 3}
   vibrationInterval: 0.3
   vibrationIntensity: 0.4
+  stadingCollider: {fileID: 61377588783617664}
+  crawlingCollider: {fileID: 61326733391964714}
   isClimbLocked: 0
   isFacingClimbable: 0
   isSqueezing: 0
