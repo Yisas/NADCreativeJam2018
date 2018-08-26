@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     // Private attributes
     private float vibrationTimer = 0;
     private Vector2 pitfallDirection;                           // When entering a pitfall, is it to the right or left of the player
-    private bool isFirstTimeScared = true;
+    private static bool isFirstTimeScared = true;
 
     // References
     private Rigidbody2D rb;
