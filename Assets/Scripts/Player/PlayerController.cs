@@ -239,6 +239,6 @@ public class PlayerController : MonoBehaviour
     {
         rb.velocity = new Vector2(0, 0);
         PlayerMemoryController.Instance.FlushAllMemories();
-        GManager.Instance.RespawnPlayer();
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GManager>().RespawnPlayer();
     }
 }

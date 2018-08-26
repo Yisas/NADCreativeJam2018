@@ -5,24 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GManager : MonoBehaviour
 {
-    public static GManager Instance;
-
     public PlayerController player;
     public Transform spawnPoint;
     public float fadeOutDelayTime;
 
-    private static int numberOfScenes = 2;
     private static int currentSceneBuildIndex = 0;
     private float fadeOutTimer = 0;
     private bool sceneTransitionTriggered = false;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
 
     private void Update()
     {
@@ -60,7 +49,7 @@ public class GManager : MonoBehaviour
     {
         currentSceneBuildIndex++;
 
-        if (currentSceneBuildIndex > numberOfScenes - 1)
+        if (currentSceneBuildIndex > SceneManager.sceneCountInBuildSettings - 1)
         {
             // Reset counter when you reach the end
             currentSceneBuildIndex = 0;
