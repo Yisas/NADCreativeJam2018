@@ -228,6 +228,8 @@ public class PlayerController : MonoBehaviour
         if (!audioSource.isPlaying)
             // Play "scared of pitfall" sound
             audioSource.PlayOneShot(scaredAudioClip, 1);
+
+        anim.SetTrigger("scared");
     }
 
     public void Die()
