@@ -8,11 +8,22 @@ public class BuddyAIController : MonoBehaviour
     public Transform playerAnchor;
     private float damping = 2.5f;
 
+    // References
     private PlayerMemoryController playerMemoryController;
+    private BuddyAICanvas canvasController;
 
     private void Start()
     {
         playerMemoryController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMemoryController>();
+        canvasController = GetComponentInChildren<BuddyAICanvas>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Test Button"))
+        {
+            canvasController.DisplayMessage("Testing :)");
+        }
     }
 
     void FixedUpdate()
@@ -29,6 +40,8 @@ public class BuddyAIController : MonoBehaviour
                 Destroy(target.parent.gameObject);
                 target = playerAnchor;
                 playerMemoryController.AssignNewMemory();
+
+                canvasController.DisplayMessage("New Memory!");
             }
         }
     }
