@@ -15,10 +15,14 @@ public class GManager : MonoBehaviour
     private float fadeOutTimer = 0;
     private bool fading = false;
     private bool sceneTransitionTriggered = false;
+    private bool isInMainMenu = false;
 
     private void Start()
     {
-        SetScore(score);
+        isInMainMenu = SceneManager.GetActiveScene().buildIndex == 0;
+
+        if (!isInMainMenu)
+            SetScore(score);
     }
 
     private void Update()
