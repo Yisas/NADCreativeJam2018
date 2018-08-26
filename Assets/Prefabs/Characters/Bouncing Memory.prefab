@@ -120,6 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4054414512110534}
   - component: {fileID: 95039151514677948}
+  - component: {fileID: 114007065369830912}
   m_Layer: 11
   m_Name: Bouncing Memory
   m_TagString: Untagged
@@ -295,6 +296,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114007065369830912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1917142730992464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe4832c7b4fcf040894d3ce295b8361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minAnimationMultiplier: 0.5
+  maxAnimationMultiplier: 1.8
 --- !u!198 &198441204730080352
 ParticleSystem:
   m_ObjectHideFlags: 1

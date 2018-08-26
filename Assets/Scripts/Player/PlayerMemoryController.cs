@@ -164,7 +164,10 @@ public class PlayerMemoryController : MonoBehaviour
 
         if(prevNumOfMemories > 0)
         {
-            GameObject.Instantiate(bouncingMemory, transform.position, bouncingMemory.transform.rotation);
+            for (int i = 0; i < prevNumOfMemories; i++)
+            {
+                GameObject go = GameObject.Instantiate(bouncingMemory, transform.position, bouncingMemory.transform.rotation);
+            }
         }
 
         for (int i = 0; i < prevNumOfMemories; i++)
