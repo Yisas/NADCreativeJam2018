@@ -1,0 +1,183 @@
+fileFormatVersion: 2
+guid: 581321776a73fcc488846b36a20f9192
+timeCreated: 1535255035
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Bone004
+    100002: Bone008
+    100004: BraceL
+    100006: BraceR
+    100008: ControlerLegL
+    100010: ControlerLegR
+    100012: ControllerB
+    100014: Eyes
+    100016: FootL
+    100018: FootL 1
+    100020: FootR
+    100022: FootR 1
+    100024: Head
+    100026: Head 1
+    100028: Head2
+    100030: IK Chain001
+    100032: IK Chain002
+    100034: KneeL
+    100036: KneeR
+    100038: //RootNode
+    100040: PoleL
+    100042: PoleR
+    100044: ShinL
+    100046: ShinL 1
+    100048: ShinR
+    100050: ShinR 1
+    100052: ShoulderL
+    100054: ShoulderR
+    100056: ThighL
+    100058: ThighL 1
+    100060: ThighR
+    100062: ThighR 1
+    100064: Torso
+    100066: Torso 1
+    400000: Bone004
+    400002: Bone008
+    400004: BraceL
+    400006: BraceR
+    400008: ControlerLegL
+    400010: ControlerLegR
+    400012: ControllerB
+    400014: Eyes
+    400016: FootL
+    400018: FootL 1
+    400020: FootR
+    400022: FootR 1
+    400024: Head
+    400026: Head 1
+    400028: Head2
+    400030: IK Chain001
+    400032: IK Chain002
+    400034: KneeL
+    400036: KneeR
+    400038: //RootNode
+    400040: PoleL
+    400042: PoleR
+    400044: ShinL
+    400046: ShinL 1
+    400048: ShinR
+    400050: ShinR 1
+    400052: ShoulderL
+    400054: ShoulderR
+    400056: ThighL
+    400058: ThighL 1
+    400060: ThighR
+    400062: ThighR 1
+    400064: Torso
+    400066: Torso 1
+    4300000: Head
+    4300002: Eyes
+    4300004: Torso
+    4300006: ShoulderR
+    4300008: ThighR
+    4300010: KneeR
+    4300012: ShinR
+    4300014: FootR
+    4300016: BraceR
+    4300018: BraceL
+    4300020: ShoulderL
+    4300022: ThighL
+    4300024: KneeL
+    4300026: ShinL
+    4300028: FootL
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: BraceL
+    13700002: BraceR
+    13700004: Eyes
+    13700006: FootL
+    13700008: FootR
+    13700010: Head
+    13700012: KneeL
+    13700014: KneeR
+    13700016: ShinL
+    13700018: ShinR
+    13700020: ShoulderL
+    13700022: ShoulderR
+    13700024: ThighL
+    13700026: ThighR
+    13700028: Torso
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Head' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
