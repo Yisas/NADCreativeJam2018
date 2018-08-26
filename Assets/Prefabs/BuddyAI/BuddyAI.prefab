@@ -1039,9 +1039,10 @@ MonoBehaviour:
   target: {fileID: 0}
   playerAnchor: {fileID: 0}
   memoryPickupSoundbites:
-  - Yummy!
+  - Take this one!
   - New memory! Yay!
-  - Imma pick this up for you =)
+  - Imma pick this up for you!
+  - Here you go!
   timeBetweenTutorialMessages: 3
 --- !u!114 &114657324284968838
 MonoBehaviour:
