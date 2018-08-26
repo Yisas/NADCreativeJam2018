@@ -20,12 +20,14 @@ public class BuddyAIController : MonoBehaviour
     private Animator anim;
     private bool displayingFlushTutorial = false;
     private int flushTutorialSequenceCount = 0;
+    private AudioSource audioSource;
 
     private void Start()
     {
         playerMemoryController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMemoryController>();
         canvasController = GetComponentInChildren<BuddyAICanvas>();
         anim = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -81,6 +83,7 @@ public class BuddyAIController : MonoBehaviour
 
                 if (distance < 1.5f)
                 {
+                    audioSource.Play();
                     Destroy(target.parent.gameObject);
                     target = playerAnchor;
                     playerMemoryController.AssignNewMemory();

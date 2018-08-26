@@ -1446,6 +1446,7 @@ MonoBehaviour:
     type: 2}
   flushVibrationIntensity: 0.2
   flushVibrationDuration: 0.5
+  vomitAudioClip: {fileID: 8300000, guid: 19f7ead1ffb1ed54dadde83133ff13a5, type: 3}
 --- !u!114 &114234193970230996
 MonoBehaviour:
   m_ObjectHideFlags: 1
