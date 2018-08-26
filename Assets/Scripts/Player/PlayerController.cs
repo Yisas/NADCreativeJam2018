@@ -69,14 +69,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isSqueezing)
-        {
-            transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(transform.localScale.y, 0.5f, 0.5f), transform.localScale.z);
-        }
-        else
-        {
-            transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
-        }
+        // Update animator
+        anim.SetBool("crawling", isSqueezing);
 
         // Reset vibration
         if (vibrationTimer > 0)
