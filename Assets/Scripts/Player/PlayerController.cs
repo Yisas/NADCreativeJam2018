@@ -7,8 +7,6 @@ using XInputDotNetPure;
 [RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController Instance;
-
     public float moveSpeed;
     public float climbSpeed;
     public float jumpForce;
@@ -35,14 +33,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private AudioSource audioSource;
     private float initGravityScale;
-
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
 
     // Use this for initialization
     void Start()
@@ -239,7 +229,7 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         rb.velocity = new Vector2(0, 0);
-        PlayerMemoryController.Instance.FlushAllMemories();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMemoryController>().FlushAllMemories();
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GManager>().RespawnPlayer();
     }
 

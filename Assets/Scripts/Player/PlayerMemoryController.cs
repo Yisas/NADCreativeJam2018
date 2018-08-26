@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMemoryController : MonoBehaviour
 {
-    public static PlayerMemoryController Instance;
     public enum MemoryTypes { None, Pitfall, Climb, PitfallBoost, ClimbBoost };
     public static readonly int maxNumberOfMemories = 3;       // Mamimum amount of memories allowed
     private readonly int numOfMemoryTypes = 4;                // Number of memory types, disregarding "None"
@@ -21,12 +20,14 @@ public class PlayerMemoryController : MonoBehaviour
 
     private Queue<MemoryTypes> memories = new Queue<MemoryTypes>();
 
-    private void Awake()
+    // References
+    private PlayerController playerController;
+    private MemoryCanvasController memoryCanvasController;
+
+    private void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        memoryCanvasController = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<MemoryCanvasController>();
     }
 
     // Update is called once per frame
@@ -143,18 +144,18 @@ public class PlayerMemoryController : MonoBehaviour
             memories.Enqueue(memoryToAssign);
 
             // Display memory effect in UI
-            MemoryCanvasController.instance.ChangeMemory(memoryToAssign);
+            memoryCanvasController.ChangeMemory(memoryToAssign);
         }
     }
 
     private void ApplyPitfallMemory(bool active)
     {
-        PlayerController.Instance.LockUnlockJumpWhenNearPitfall(active);
+        playerController.LockUnlockJumpWhenNearPitfall(active);
     }
 
     private void ApplyClimbMemory(bool active)
     {
-        PlayerController.Instance.LockUnlockClimbing(active);
+        playerController.LockUnlockClimbing(active);
     }
 
     /// <summary>
@@ -172,7 +173,7 @@ public class PlayerMemoryController : MonoBehaviour
             }
 
             // Rumble
-            PlayerController.Instance.GetComponent<PlayerController>().Rumble(flushVibrationIntensity, flushVibrationDuration);
+            playerController.Rumble(flushVibrationIntensity, flushVibrationDuration);
         }
 
         for (int i = 0; i < prevNumOfMemories; i++)
@@ -182,7 +183,7 @@ public class PlayerMemoryController : MonoBehaviour
 
         ApplyPitfallMemory(false);
         ApplyClimbMemory(false);
-        MemoryCanvasController.instance.FlushMemories();
+        memoryCanvasController.FlushMemories();
     }
 
     /// <summary>

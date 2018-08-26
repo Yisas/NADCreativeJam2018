@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuddyAIController : MonoBehaviour {
+public class BuddyAIController : MonoBehaviour
+{
     public Transform target;
     public Transform playerAnchor;
     private float damping = 2.5f;
+
+    private PlayerMemoryController playerMemoryController;
+
+    private void Start()
+    {
+        playerMemoryController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMemoryController>();
+    }
 
     void FixedUpdate()
     {
@@ -20,7 +28,7 @@ public class BuddyAIController : MonoBehaviour {
             {
                 Destroy(target.parent.gameObject);
                 target = playerAnchor;
-                PlayerMemoryController.Instance.AssignNewMemory();
+                playerMemoryController.AssignNewMemory();
             }
         }
     }

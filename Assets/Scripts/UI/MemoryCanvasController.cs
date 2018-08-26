@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class MemoryCanvasController : MonoBehaviour
 {
-    public static MemoryCanvasController instance;
-
     public Image[] memorySprites;
     public Sprite pitfallMemorySprite;
     public Sprite pitfallMemorySpriteAlternate;
@@ -14,20 +12,6 @@ public class MemoryCanvasController : MonoBehaviour
     public Sprite climbingMemorySpriteAlternate;
 
     private int memoryCount = 0;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

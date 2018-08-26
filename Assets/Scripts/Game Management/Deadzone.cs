@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deadzone : MonoBehaviour {
+public class Deadzone : MonoBehaviour
+{
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Player")
+        if (collision.transform.tag == "Player")
         {
-            PlayerController.Instance.Die();
+            collision.gameObject.GetComponent<PlayerController>().Die();
         }
     }
 }

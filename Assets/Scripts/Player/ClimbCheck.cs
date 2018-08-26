@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class ClimbCheck : MonoBehaviour
 {
+    private PlayerController playerController;
+
+    private void Start()
+    {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Climbable")
         {
-            PlayerController.Instance.SetIsFacingClimbable(true);
+            playerController.SetIsFacingClimbable(true);
         }
     }
 
@@ -17,7 +23,7 @@ public class ClimbCheck : MonoBehaviour
     {
         if (collision.transform.tag == "Climbable")
         {
-            PlayerController.Instance.SetIsFacingClimbable(false);
+            playerController.SetIsFacingClimbable(false);
         }
     }
 }
