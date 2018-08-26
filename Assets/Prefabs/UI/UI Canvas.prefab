@@ -297,6 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackSprite: {fileID: 114083684500982536}
   fadeSpeed: 0.02
+  fadeSpeedFast: 0.08
   scoreText: {fileID: 114912638548035252}
 --- !u!114 &114912638548035252
 MonoBehaviour:

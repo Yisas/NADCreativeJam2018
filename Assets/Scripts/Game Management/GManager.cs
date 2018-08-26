@@ -8,10 +8,12 @@ public class GManager : MonoBehaviour
     public PlayerController player;
     public Transform spawnPoint;
     public float fadeOutDelayTime;
+    public float fadeOutDelatTimeFast;
 
     private static int score = 0;
     private static int currentSceneBuildIndex = 0;
     private float fadeOutTimer = 0;
+    private bool fading = false;
     private bool sceneTransitionTriggered = false;
 
     private void Start()
@@ -31,22 +33,35 @@ public class GManager : MonoBehaviour
             IncreaseScore();
         }
 
-        if (sceneTransitionTriggered)
+        if (fading)
         {
             fadeOutTimer -= Time.deltaTime;
 
             if (fadeOutTimer <= 0)
             {
-                LoadNextScene();
-                sceneTransitionTriggered = false;
+                if (sceneTransitionTriggered)
+                {
+                    LoadNextScene();
+                    sceneTransitionTriggered = false;
+                }
+                else
+                {
+                    // Respawning
+                    player.transform.position = spawnPoint.transform.position;
+                    GameObject.FindGameObjectWithTag("UICanvas").GetComponent<MainUIController>().FadeIn(true);
+                }
+
                 fadeOutTimer = 0;
+                fading = false;
             }
         }
     }
 
     public void RespawnPlayer()
     {
-        player.transform.position = spawnPoint.transform.position;
+        fading = true;
+        fadeOutTimer = fadeOutDelatTimeFast;
+        GameObject.FindGameObjectWithTag("UICanvas").GetComponent<MainUIController>().FadeOut(true);
     }
 
     public void IncreaseScore(int amount = 1)
@@ -65,6 +80,7 @@ public class GManager : MonoBehaviour
     {
         fadeOutTimer = fadeOutDelayTime;
         GameObject.FindGameObjectWithTag("UICanvas").GetComponent<MainUIController>().FadeOut();
+        fading = true;
         sceneTransitionTriggered = true;
     }
 

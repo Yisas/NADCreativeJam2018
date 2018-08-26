@@ -7,6 +7,7 @@ public class MainUIController : MonoBehaviour
 {
     public Image blackSprite;
     public float fadeSpeed = 0.05f;
+    public float fadeSpeedFast = 0.1f;
 
     public Text scoreText;
 
@@ -16,14 +17,28 @@ public class MainUIController : MonoBehaviour
         FadeIn();
     }
 
-    public void FadeIn()
+    public void FadeIn(bool fast = false)
     {
-        StartCoroutine("FadeInCoroutine");
+        if (!fast)
+        {
+            StartCoroutine("FadeInCoroutine");
+        }
+        else
+        {
+            StartCoroutine("FadeInCoroutineFast");
+        }
     }
 
-    public void FadeOut()
+    public void FadeOut(bool fast = false)
     {
-        StartCoroutine("FadeOutCoroutine");
+        if (!fast)
+        {
+            StartCoroutine("FadeOutCoroutine");
+        }
+        else
+        {
+            StartCoroutine("FadeOutCoroutineFast");
+        }
     }
 
     public void IncreaseScore(int amount = 1)
@@ -50,6 +65,28 @@ public class MainUIController : MonoBehaviour
     IEnumerator FadeOutCoroutine()
     {
         for (float f = 0f; f <= 1.0f; f += fadeSpeed)
+        {
+            Color c = blackSprite.color;
+            c.a = f;
+            blackSprite.color = c;
+            yield return null;
+        }
+    }
+
+    IEnumerator FadeInCoroutineFast()
+    {
+        for (float f = 1f; f >= 0; f -= fadeSpeedFast)
+        {
+            Color c = blackSprite.color;
+            c.a = f;
+            blackSprite.color = c;
+            yield return null;
+        }
+    }
+
+    IEnumerator FadeOutCoroutineFast()
+    {
+        for (float f = 0f; f <= 1.0f; f += fadeSpeedFast)
         {
             Color c = blackSprite.color;
             c.a = f;
