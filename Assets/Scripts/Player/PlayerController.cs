@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         }
 
         isGrounded = Mathf.Abs(rb.velocity.y) == 0;
+        anim.SetBool("grounded", isGrounded);
 
         if (isJumping)
         {
