@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 4ceb74cea0df6e948a35b313d136824f
   - enabled: 1
-    path: Assets/Scenes/Test Scene.unity
-    guid: 19925a59d8cfea4468c46979a6262589
-  - enabled: 1
-    path: Assets/Scenes/weslevels/levl1_wes.unity
+    path: Assets/Scenes/weslevels/Levels/levl1_wes.unity
     guid: 3f5d818ca75fca544810f0118e295867
   - enabled: 1
-    path: Assets/Scenes/weslevels/levl2_wes.unity
+    path: Assets/Scenes/weslevels/Levels/levl2_wes.unity
     guid: 00c218409f57faf4d897bde75ef7592c
+  - enabled: 1
+    path: Assets/Scenes/weslevels/Levels/levl3_wes.unity
+    guid: 632c235d9aee5b647a406cb22173d06f
