@@ -957,6 +957,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   playerAnchor: {fileID: 0}
+  memoryPickupSoundbites:
+  - Yummy!
+  - New memory! Yay!
+  - Imma pick this up for you =)
 --- !u!114 &114657324284968838
 MonoBehaviour:
   m_ObjectHideFlags: 1

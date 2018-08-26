@@ -8,6 +8,10 @@ public class BuddyAIController : MonoBehaviour
     public Transform playerAnchor;
     private float damping = 2.5f;
 
+    public string[] memoryPickupSoundbites;
+
+    private int lastSelectedSoundbite = 0;
+
     // References
     private PlayerMemoryController playerMemoryController;
     private BuddyAICanvas canvasController;
@@ -41,7 +45,7 @@ public class BuddyAIController : MonoBehaviour
                 target = playerAnchor;
                 playerMemoryController.AssignNewMemory();
 
-                DisplayMessage("New Memory!");
+                DisplayMessage(ChooseRandomSoundbite());
             }
         }
     }
@@ -64,5 +68,20 @@ public class BuddyAIController : MonoBehaviour
     public void DisplayMessage(string message)
     {
         canvasController.DisplayMessage(message);
+    }
+
+    private string ChooseRandomSoundbite()
+    {
+        int i;
+
+        do
+        {
+            i = Random.Range(0, memoryPickupSoundbites.Length);
+        }
+        while (i == lastSelectedSoundbite);
+
+        lastSelectedSoundbite = i;
+
+        return memoryPickupSoundbites[i];
     }
 }
