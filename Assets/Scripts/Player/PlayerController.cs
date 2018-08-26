@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0)); 
+                    transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
                 }
 
 
@@ -209,7 +209,10 @@ public class PlayerController : MonoBehaviour
         isFacingClimbable = value;
 
         if (value)
+        {
             rb.gravityScale = 0;
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+        }
         else
             rb.gravityScale = initGravityScale;
     }
