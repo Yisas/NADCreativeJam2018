@@ -173,7 +173,7 @@ public class PlayerMemoryController : MonoBehaviour
 
             for (int i = 0; i < prevNumOfMemories; i++)
             {
-                GameObject go = GameObject.Instantiate(bouncingMemory, transform.position, bouncingMemory.transform.rotation);
+                GameObject go = GameObject.Instantiate(bouncingMemory, bouncingMemorySpawnPosition.position, bouncingMemory.transform.rotation);
             }
 
             // Rumble
