@@ -454,6 +454,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 1932078682889170, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
   m_IsPrefabParent: 0
@@ -804,6 +808,10 @@ Prefab:
     - target: {fileID: 1932078682889170, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
       propertyPath: m_Name
       value: Firefly Spawner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1932078682889170, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
@@ -1831,6 +1839,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.177288
       objectReference: {fileID: 0}
+    - target: {fileID: 1932078682889170, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
   m_IsPrefabParent: 0
@@ -1982,6 +1994,11 @@ Prefab:
     - target: {fileID: 1200538191506344, guid: d59d52b6228a6c44a9f3b07273f12216, type: 2}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579811431635066, guid: d59d52b6228a6c44a9f3b07273f12216,
+        type: 2}
+      propertyPath: climbSpeed
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d59d52b6228a6c44a9f3b07273f12216, type: 2}

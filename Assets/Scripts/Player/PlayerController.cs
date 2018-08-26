@@ -91,6 +91,8 @@ public class PlayerController : MonoBehaviour
             // If not facing climbable...
             if (!isFacingClimbable)
             {
+                anim.SetBool("climbing", false);
+
                 // ... check for memory effect of pitfal...
                 if (isInsidePitfallAproachZone && isJumpLockedWhenNearPitfall)
                 {
@@ -108,8 +110,6 @@ public class PlayerController : MonoBehaviour
                 {
                     Move(horizontalInput);
                 }
-
-
             }
             // ... Else climb if moving right
             else
@@ -121,6 +121,8 @@ public class PlayerController : MonoBehaviour
                     //GetComponent<Rigidbody2D>().velocity = new Vector2(currVel.x, climbSpeed);
                     Vector3 vectorControl = new Vector3(Time.deltaTime * climbSpeed * horizontalInput * 0.1f, Mathf.Abs(Time.deltaTime * climbSpeed * horizontalInput), 0);
                     transform.Translate(vectorControl, 0);
+
+                    anim.SetBool("climbing", true);
                 }
                 else
                 {
