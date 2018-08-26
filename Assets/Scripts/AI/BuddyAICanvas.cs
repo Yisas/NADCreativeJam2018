@@ -9,17 +9,12 @@ public class BuddyAICanvas : MonoBehaviour
     private float delayTime = 4.0f;
     private IEnumerator coroutine;
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void DisplayMessage(string text)
     {
         panel.SetActive(true);
         GetComponentInChildren<Text>().text = text;
-        
+
+        StopAllCoroutines();
         coroutine = dissapear(delayTime);
         StartCoroutine(coroutine);
     }
