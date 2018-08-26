@@ -961,6 +961,7 @@ MonoBehaviour:
   - Yummy!
   - New memory! Yay!
   - Imma pick this up for you =)
+  timeBetweenTutorialMessages: 3
 --- !u!114 &114657324284968838
 MonoBehaviour:
   m_ObjectHideFlags: 1

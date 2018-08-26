@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     // Private attributes
     private float vibrationTimer = 0;
     private Vector2 pitfallDirection;                           // When entering a pitfall, is it to the right or left of the player
+    private bool isFirstTimeScared = true;
 
     // References
     private Rigidbody2D rb;
@@ -232,7 +233,15 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void ScaredFeedback()
     {
-        buddyAI.DisplayMessage("Oh no, did that memory scare you?");
+        if (!isFirstTimeScared)
+        {
+            buddyAI.DisplayMessage("Oh no, did that memory scare you?");
+        }
+        else
+        {
+            buddyAI.TriggerFlushTutorial();
+            isFirstTimeScared = false;
+        }
 
         Rumble(vibrationIntensity, vibrationInterval);
         GamePad.SetVibration(0, vibrationIntensity, vibrationIntensity);
