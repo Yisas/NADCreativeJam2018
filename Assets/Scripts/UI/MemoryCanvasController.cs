@@ -10,6 +10,7 @@ public class MemoryCanvasController : MonoBehaviour
     public Sprite pitfallMemorySpriteAlternate;
     public Sprite climbingMemorySprite;
     public Sprite climbingMemorySpriteAlternate;
+    public GameObject powerupEffect;
 
     private int memoryCount = 0;
 
@@ -77,8 +78,16 @@ public class MemoryCanvasController : MonoBehaviour
         }
     }
 
+    public void hidePowerup()
+    {
+        powerupEffect.SetActive(false);
+    }
+
     public void RemoveMemory()
     {
+        powerupEffect.SetActive(true);
+        Invoke("hidePowerup", 0.3f);
+
         int i = 0;
         foreach (Image im in memorySprites)
         {
