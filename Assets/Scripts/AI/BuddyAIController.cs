@@ -11,11 +11,13 @@ public class BuddyAIController : MonoBehaviour
     // References
     private PlayerMemoryController playerMemoryController;
     private BuddyAICanvas canvasController;
+    private Animator anim;
 
     private void Start()
     {
         playerMemoryController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMemoryController>();
         canvasController = GetComponentInChildren<BuddyAICanvas>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -34,6 +36,12 @@ public class BuddyAIController : MonoBehaviour
         if (target != playerAnchor)
         {
             float distance = Vector3.Distance(transform.position, target.position);
+
+            // Start opening lid on aproach
+            if(distance < 3.0f)
+            {
+                anim.SetTrigger("openLid");
+            }
 
             if (distance < 1.5f)
             {
