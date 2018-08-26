@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMemoryController : MonoBehaviour
 {
     public static PlayerMemoryController Instance;
-
     public enum MemoryTypes { None, Pitfall, Climb, PitfallBoost, ClimbBoost };
     public static readonly int maxNumberOfMemories = 3;       // Mamimum amount of memories allowed
     private readonly int numOfMemoryTypes = 4;                // Number of memory types, disregarding "None"
@@ -14,6 +13,9 @@ public class PlayerMemoryController : MonoBehaviour
     public float minMemoryChangeTimer;
     public float maxMemoryChangeTimer;
     private float memoryChangeTimer = 0;
+
+    public Transform bouncingMemorySpawnPosition;
+    public GameObject bouncingMemory;
 
     private Queue<MemoryTypes> memories = new Queue<MemoryTypes>();
 
@@ -159,6 +161,11 @@ public class PlayerMemoryController : MonoBehaviour
     public void FlushAllMemories()
     {
         int prevNumOfMemories = memories.Count;
+
+        if(prevNumOfMemories > 0)
+        {
+            GameObject.Instantiate(bouncingMemory, transform.position, bouncingMemory.transform.rotation);
+        }
 
         for (int i = 0; i < prevNumOfMemories; i++)
         {
