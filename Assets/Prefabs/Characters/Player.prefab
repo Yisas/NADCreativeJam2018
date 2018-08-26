@@ -1493,7 +1493,7 @@ MonoBehaviour:
   moveSpeed: 20
   climbSpeed: 15
   jumpForce: 1000
-  scaredAudioClip: {fileID: 8300000, guid: bb528da53c8877c4f9478264ef1acb33, type: 3}
+  scaredAudioClip: {fileID: 8300000, guid: 13d1fc3621b894c4aa86cae14c57af02, type: 3}
   deathAudioClip: {fileID: 8300000, guid: e0417a5d0742a404a89e06830a30dec6, type: 3}
   vibrationInterval: 0.3
   vibrationIntensity: 0.4

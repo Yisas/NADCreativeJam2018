@@ -249,7 +249,7 @@ public class PlayerController : MonoBehaviour
 
         if (!audioSource.isPlaying)
             // Play "scared of pitfall" sound
-            audioSource.PlayOneShot(scaredAudioClip, 3);
+            audioSource.PlayOneShot(scaredAudioClip, 0.5f);
 
         // Don't animate movement when scared
         anim.SetFloat("walkingSpeed", 0);
