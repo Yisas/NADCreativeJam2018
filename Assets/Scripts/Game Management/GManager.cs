@@ -15,7 +15,7 @@ public class GManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Test Button"))
+        if (Input.GetButtonDown("Next Level"))
         {
             NextScene();
         }
