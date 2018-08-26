@@ -456,7 +456,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1932078682889170, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
@@ -811,7 +811,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1932078682889170, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
@@ -1841,7 +1841,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1932078682889170, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 628066cdc37e5cd4f9574ce5d3ba48c3, type: 2}
@@ -1990,15 +1990,6 @@ Prefab:
     - target: {fileID: 4881337537762068, guid: d59d52b6228a6c44a9f3b07273f12216, type: 2}
       propertyPath: m_RootOrder
       value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 1200538191506344, guid: d59d52b6228a6c44a9f3b07273f12216, type: 2}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 114579811431635066, guid: d59d52b6228a6c44a9f3b07273f12216,
-        type: 2}
-      propertyPath: climbSpeed
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d59d52b6228a6c44a9f3b07273f12216, type: 2}

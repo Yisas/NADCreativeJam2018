@@ -58,10 +58,11 @@ public class PlayerController : MonoBehaviour
         }
 
         isGrounded = Mathf.Abs(rb.velocity.y) == 0;
+        anim.SetBool("grounded", isGrounded);
 
         if (isJumping)
         {
-            rb.AddForce(new Vector2(0, jumpForce));
+            anim.SetTrigger("jump");
             isJumping = false;
         }
     }
@@ -227,6 +228,8 @@ public class PlayerController : MonoBehaviour
         if (!audioSource.isPlaying)
             // Play "scared of pitfall" sound
             audioSource.PlayOneShot(scaredAudioClip, 1);
+
+        anim.SetTrigger("scared");
     }
 
     public void Die()
@@ -247,5 +250,11 @@ public class PlayerController : MonoBehaviour
         transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
 
         anim.SetFloat("walkingSpeed", Mathf.Abs(horizontalInput));
+    }
+
+    public void TriggerJump()
+    {
+        rb.AddForce(new Vector2(0, jumpForce));
+        isJumping = false;
     }
 }
