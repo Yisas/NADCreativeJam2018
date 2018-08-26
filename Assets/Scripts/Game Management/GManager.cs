@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GManager : MonoBehaviour
 {
-    public static GManager Instance;
-
     public PlayerController player;
     public Transform spawnPoint;
     public float fadeOutDelayTime;
@@ -15,14 +13,6 @@ public class GManager : MonoBehaviour
     private static int currentSceneBuildIndex = 0;
     private float fadeOutTimer = 0;
     private bool sceneTransitionTriggered = false;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
 
     private void Update()
     {
