@@ -86,7 +86,7 @@ public class MemoryCanvasController : MonoBehaviour
     public void RemoveMemory()
     {
         powerupEffect.SetActive(true);
-        Invoke("hidePowerup", 0.3f);
+        Invoke("hidePowerup", 0.2f);
 
         int i = 0;
         foreach (Image im in memorySprites)
