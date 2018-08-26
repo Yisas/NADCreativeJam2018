@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
         if (isJumping)
         {
-            rb.AddForce(new Vector2(0, jumpForce));
+            anim.SetTrigger("jump");
             isJumping = false;
         }
     }
@@ -247,5 +247,11 @@ public class PlayerController : MonoBehaviour
         transform.Translate(new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0));
 
         anim.SetFloat("walkingSpeed", Mathf.Abs(horizontalInput));
+    }
+
+    public void TriggerJump()
+    {
+        rb.AddForce(new Vector2(0, jumpForce));
+        isJumping = false;
     }
 }
