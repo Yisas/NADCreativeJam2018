@@ -10,6 +10,7 @@ TagManager:
   - Climbable
   - Squeezable
   - UICanvas
+  - BuddyAI
   layers:
   - Default
   - TransparentFX

@@ -20,14 +20,6 @@ public class BuddyAIController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
     }
 
-    private void Update()
-    {
-        if (Input.GetButtonDown("Test Button"))
-        {
-            canvasController.DisplayMessage("Testing :)");
-        }
-    }
-
     void FixedUpdate()
     {
         this.transform.position = new Vector3(Mathf.Lerp(this.transform.position.x, target.position.x, Time.deltaTime * damping),
@@ -38,7 +30,7 @@ public class BuddyAIController : MonoBehaviour
             float distance = Vector3.Distance(transform.position, target.position);
 
             // Start opening lid on aproach
-            if(distance < 3.0f)
+            if (distance < 3.0f)
             {
                 anim.SetTrigger("openLid");
             }
@@ -49,7 +41,7 @@ public class BuddyAIController : MonoBehaviour
                 target = playerAnchor;
                 playerMemoryController.AssignNewMemory();
 
-                canvasController.DisplayMessage("New Memory!");
+                DisplayMessage("New Memory!");
             }
         }
     }
@@ -67,5 +59,10 @@ public class BuddyAIController : MonoBehaviour
                 target = playerAnchor;
             }
         }
+    }
+
+    public void DisplayMessage(string message)
+    {
+        canvasController.DisplayMessage(message);
     }
 }

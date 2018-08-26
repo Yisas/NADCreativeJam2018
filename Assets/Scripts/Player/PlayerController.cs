@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
     private Animator anim;
     private float initGravityScale;
+    private BuddyAIController buddyAI;
 
     // Use this for initialization
     void Start()
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
         initGravityScale = rb.gravityScale;
         audioSource = GetComponent<AudioSource>();
         anim = GetComponentInChildren<Animator>();
+        buddyAI = GameObject.FindGameObjectWithTag("BuddyAI").GetComponent<BuddyAIController>();
     }
 
     void FixedUpdate()
@@ -230,6 +232,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void ScaredFeedback()
     {
+        buddyAI.DisplayMessage("Oh no, did that memory scare you?");
+
         Rumble(vibrationIntensity, vibrationInterval);
         GamePad.SetVibration(0, vibrationIntensity, vibrationIntensity);
         vibrationTimer = vibrationInterval;
