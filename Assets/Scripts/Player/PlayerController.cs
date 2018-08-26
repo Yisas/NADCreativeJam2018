@@ -12,9 +12,13 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
 
     public AudioClip scaredAudioClip;
+    public AudioClip deathAudioClip;
 
     public float vibrationInterval;
     public float vibrationIntensity;
+
+    public BoxCollider2D stadingCollider;
+    public BoxCollider2D crawlingCollider;
 
     // States
     private bool isJumpLockedWhenNearPitfall = false;
@@ -124,6 +128,7 @@ public class PlayerController : MonoBehaviour
                     transform.Translate(vectorControl, 0);
 
                     anim.SetBool("climbing", true);
+                    anim.SetFloat("walkingSpeed", Mathf.Abs(horizontalInput));
                 }
                 else
                 {
@@ -214,6 +219,10 @@ public class PlayerController : MonoBehaviour
     public void SetIsSqueezing(bool value)
     {
         isSqueezing = value;
+
+        // Toggle colliders
+        stadingCollider.enabled = !value;
+        crawlingCollider.enabled = value;
     }
 
     /// <summary>
@@ -229,6 +238,8 @@ public class PlayerController : MonoBehaviour
             // Play "scared of pitfall" sound
             audioSource.PlayOneShot(scaredAudioClip, 1);
 
+        // Don't animate movement when scared
+        anim.SetFloat("walkingSpeed", 0);
         anim.SetTrigger("scared");
     }
 
@@ -237,6 +248,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMemoryController>().FlushAllMemories();
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GManager>().RespawnPlayer();
+        audioSource.PlayOneShot(deathAudioClip, 0.2f);
     }
 
     public void Rumble(float vibrationIntensity, float vibrationDuration)

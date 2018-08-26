@@ -6,9 +6,9 @@ public class Deadzone : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Player")
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<PlayerController>().Die();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Die();
         }
     }
 }

@@ -54,3 +54,4 @@ MonoBehaviour:
   player: {fileID: 0}
   spawnPoint: {fileID: 0}
   fadeOutDelayTime: 1.5
+  fadeOutDelatTimeFast: 0.5

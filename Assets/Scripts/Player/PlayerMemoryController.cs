@@ -173,7 +173,7 @@ public class PlayerMemoryController : MonoBehaviour
 
             for (int i = 0; i < prevNumOfMemories; i++)
             {
-                GameObject go = GameObject.Instantiate(bouncingMemory, transform.position, bouncingMemory.transform.rotation);
+                GameObject go = GameObject.Instantiate(bouncingMemory, bouncingMemorySpawnPosition.position, bouncingMemory.transform.rotation);
             }
 
             // Rumble
@@ -196,5 +196,20 @@ public class PlayerMemoryController : MonoBehaviour
     private void CycleMemory()
     {
         FlushAllMemories();
+    }
+
+    public void ComputeScore()
+    {
+        int scoreCount = 0;
+
+        foreach (MemoryTypes m in memories)
+        {
+            if (m == MemoryTypes.ClimbBoost || m == MemoryTypes.PitfallBoost)
+            {
+                scoreCount++;
+            }
+        }
+
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GManager>().IncreaseScore(scoreCount);
     }
 }
