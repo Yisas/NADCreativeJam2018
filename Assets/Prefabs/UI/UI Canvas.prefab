@@ -353,9 +353,9 @@ MonoBehaviour:
     type: 3}
   pitfallMemorySpriteAlternate: {fileID: 21300000, guid: 457e6ad255401a0409fdae0f70a86bf6,
     type: 3}
-  climbingMemorySprite: {fileID: 21300000, guid: feb25dc8b9dc8f8459c1fedf486eb9f4,
+  climbingMemorySprite: {fileID: 21300000, guid: 4dc2c8dfb47bef2469f89bb438c829c7,
     type: 3}
-  climbingMemorySpriteAlternate: {fileID: 21300000, guid: 4dc2c8dfb47bef2469f89bb438c829c7,
+  climbingMemorySpriteAlternate: {fileID: 21300000, guid: feb25dc8b9dc8f8459c1fedf486eb9f4,
     type: 3}
 --- !u!114 &114941224004023480
 MonoBehaviour:
@@ -448,7 +448,7 @@ RectTransform:
   m_GameObject: {fileID: 1850664220669350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 224484016370218156}
   m_RootOrder: 2
@@ -526,7 +526,7 @@ RectTransform:
   m_GameObject: {fileID: 1678734707963504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 224484016370218156}
   m_RootOrder: 1
@@ -562,7 +562,7 @@ RectTransform:
   m_GameObject: {fileID: 1360550332963592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 224484016370218156}
   m_RootOrder: 0
