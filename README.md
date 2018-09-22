@@ -14,6 +14,10 @@ This entry is named "Pipe Dream", a 2D platformer with mixed 3D elements and an 
 
 You may download the binaries for this game from the [releases section](https://github.com/Yisas/NADCreativeJam2018/releases/tag/v1.0), or you may visit its [itch.io website](https://yisas.itch.io/pipe-dream).
 
+## Technical notes
+
+This game is available for Windows systems only. It is best played with an Xbox controller, but you may use a keyboard as well.
+
 ## Participating members:
 
 * [Zoë Elise Blackbourn](https://github.com/Zanadi)
